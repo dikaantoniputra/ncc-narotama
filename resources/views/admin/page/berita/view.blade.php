@@ -1,7 +1,7 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('title')
-    Materi
+    Berita
 @endsection
 
 @section('content')
@@ -18,13 +18,13 @@
                 </nav>
             </div>
             <div class="ms-auto">
-                @if (auth()->user()->role == 'tentor')
+
                     <div class="btn-group">
-                        <a href="{{ route('materi.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
+                        <a href="{{ route('beritas.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
                        
                        
                     </div>
-                @endif
+                
             </div>
         </div>
         <!--end breadcrumb-->
@@ -37,12 +37,11 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Pelajaran</th>
-                                <th>Slug</th>
-                                @if (auth()->user()->role == 'tentor')
-                                    <th>Action</th>
-                                @endif
+                                <th>ID</th>
+                                <th>Name Pembuat</th>
+                                <th>Judul</th>
+                                <th>Cover</th>
+                                <th>Action</th>    
                             </tr>
                         </thead>
                         <tbody>
@@ -71,7 +70,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('materi.index') }}',
+                    url: '{{ route('beritas.index') }}',
 
                 },
                 columns: [{
@@ -79,21 +78,25 @@
                         name: 'id'
                     },
                     {
-                        data: 'pelajaran.nama_pelajaran',
-                        name: 'pelajaran.nama_pelajaran'
+                        data: 'user.name',
+                        name: 'user.name'
                     },
                     {
-                        data: 'slug',
-                        name: 'slug'
+                        data: 'judul',
+                        name: 'judul'
                     },
-                    @if (auth()->user()->role == 'tentor')
+                    {
+                        data: 'cover',
+                        name: 'cover'
+                    },
+                 
                         {
                             data: 'action',
                             name: 'action',
                             orderable: false,
                             searchable: false
                         }
-                    @endif
+               
 
                 ]
             });

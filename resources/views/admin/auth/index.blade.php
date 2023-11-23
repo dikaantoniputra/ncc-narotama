@@ -25,8 +25,8 @@
                                         <div class="form-body">
                                             <form class="row g-3">
                                                 <div class="col-12">
-                                                    <label for="inputEmailAddress" class="form-label">Email Address</label>
-                                                    <input type="email" class="form-control" id="inputEmailAddress" placeholder="Email Address" name="email">
+                                                    <label for="inputEmailAddress" class="form-label">username Address</label>
+                                                    <input type="text" class="form-control" id="inputEmailAddress" placeholder="username Address" name="username">
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="inputChoosePassword" class="form-label">Enter Password</label>

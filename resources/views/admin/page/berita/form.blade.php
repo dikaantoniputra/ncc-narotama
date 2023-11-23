@@ -8,26 +8,26 @@
                     <div class="card-title d-flex align-items-center">
                         <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                         </div>
-                        <h5 class="mb-0 text-info">@yield('title') Registration</h5>
+                        <h5 class="mb-0 text-info">@yield('title') Create</h5>
                     </div>
                     <hr/>
 
                     <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Kategori Pelajaran</label>
-                        <div class="col-sm-9">
-                            <select class="form-select" id="role" name="pelajaran_id">
-                                @foreach($pelajaran as $r)
-                                    <option value="{{ $r->id }}">{{ $r->nama_pelajaran }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <h4 class="mb-4">Judul</h4>
+                            <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="judul" value="{{ $berita->judul ?? '' }}">
+                        
                     </div>
 
                     <div class="row mb-3">
-                    <h4 class="mb-4">Materi Pelajaran</h4>
-							<textarea id="mytextarea" name="materi">{{ $materi->materi ?? '' }}</textarea>
-                    </div>
+                    <h4 class="mb-4">Isi Berita</h4>
+							<textarea id="mytextarea" name="isi">{{ $berita->isi ?? '' }}</textarea>
+                    </div> 
 
+                                            @if($berita->cover ?? '')
+                                                    <img src="{{ asset('') }}uploads/{{ $berita->cover }}" alt="blog image">
+                                                @else
+                                                    <img src="https://placehold.co/250x250" class="img-fluid" alt="">
+                                                @endif
                     <div class="row mb-3">
                         <div class="col-xl-12 mx-auto">
                             <h6 class="mb-0 text-uppercase">File Materi</h6>
@@ -35,35 +35,8 @@
                             <div class="card">
                                 <div class="card-body">
                                    
-                                        <input id="image-uploadify" type="file" name="file_materi[]" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
-                                        
-                                        <!-- Tampilkan data file materi -->
-                                        <div class="mt-3">
-                                            <h6>Data File Materi:</h6>
-                                            <ul>
-                                                {{-- @foreach ($fileMateri as $file)
-                                                <li>
-                                                    <a href="{{ route('download.file', ['filename' => $file->nama_file]) }}">{{ $file->nama_file }}</a>
-                                                    <button onclick="deleteFile('{{ $file->id }}')" class="border-0 bg-transparent"><i class="text-danger" data-feather="delete"></i></button>
-                                                </li>
-                                            @endforeach --}}
-                                            @if (isset($fileMateri) && !$fileMateri->isEmpty())
-                                                <ul>
-                                                    @foreach ($fileMateri as $file)
-                                                        <li>
-                                                            <a href="{{ route('download.file', ['filename' => $file->nama_file]) }}">{{ $file->nama_file }}</a>
-                                                            <button onclick="deleteFile('{{ $file->id }}')" class="border-0 bg-transparent"><i class="text-danger" data-feather="delete"></i></button>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            @else
-                                                <p>Tidak ada file yang tersedia.</p>
-                                            @endif
+                                        <input  type="file" name="cover" >
 
-                                            
-                                            
-                                            </ul>
-                                        </div>
                                    
                                 </div>
                             </div>

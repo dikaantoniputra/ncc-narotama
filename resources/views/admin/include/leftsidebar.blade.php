@@ -38,46 +38,46 @@
                 </ul>
             </li>
 
-            <li class="menu-label">Master Pelajaran</li>
+            <li class="menu-label">Master Berita</li>
             <li>
-                <a href="{{ url('pelajaran') }}">
+                <a href="{{ url('admin/berita') }}">
                     <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
-                    <div class="menu-title">Pelajaran</div>
-                </a>
-            </li>
-            {{-- <li>
-                <a href="{{ url('materi') }}">
-                    <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
-                    </div>
-                    <div class="menu-title">Materi</div>
+                    <div class="menu-title">Berita</div>
                 </a>
             </li>
 
-
-            <li class="menu-label">Master Kelas</li>
+            <li class="menu-label">Master Pelatihan</li>
             <li>
-                <a href="{{ url('pendidikan') }}">
-                    <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                <a href="{{ url('admin/kategoripelatihans') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
-                    <div class="menu-title">Pendidikan</div>
+                    <div class="menu-title">Ketegori</div>
                 </a>
             </li>
             <li>
-                <a href="{{ url('kelase') }}">
-                    <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <a href="{{ url('admin/pelatihan') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
-                    <div class="menu-title">Kelas</div>
+                    <div class="menu-title">Pelatihan</div>
                 </a>
+            </li>
 
-            </li> --}}
-            {{-- <li>
-                <a href="{{ route('jadwal.index') }}">
-                    <div class="parent-icon"><i class="bx bx-grid-alt"></i>
+            <li class="menu-label">Master Lowongan</li>
+            <li>
+                <a href="{{ url('admin/kategoripelatihans') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
-                    <div class="menu-title">Jadwal</div>
+                    <div class="menu-title">Ketegori</div>
                 </a>
-            </li> --}}
+            </li>
+            <li>
+                <a href="{{ url('admin/pelatihan') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    </div>
+                    <div class="menu-title">Lowongan</div>
+                </a>
+            </li>
 
 
             <li class="menu-label">Mater Umum</li>
