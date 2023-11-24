@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PelatihanController;
@@ -31,9 +32,14 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
 Route::get('/', function () {
-
     return view('admin.page.index', );
 })->name('admin.dashboard');
+
+Route::get('/profile', [AdminController::class, 'profile']);
+Route::put('/profile', [AdminController::class, 'profileupdate'])->name('profile.update');
+
+Route::get('/profile/password', [AdminController::class, 'showPasswordForm'])->name('profile.password');
+Route::put('/profile/password', [AdminController::class, 'updatePassword'])->name('profile.updatePassword');
 
 Route::resource('beritas', BeritaController::class);
 Route::resource('kategoripelatihans', KategoriPelatihanController::class);

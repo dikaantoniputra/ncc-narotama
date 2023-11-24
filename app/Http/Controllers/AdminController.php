@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Admin;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -45,10 +47,36 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function profile()
     {
-        //
+        $user = Auth::user();
+        return view('admin.page.profile', compact('user'));
     }
+
+    public function profileupdate(Request $request)
+    {
+        $user = User::find(Auth::id()); // Mencari user yang sedang login
+       
+        if ($user) {
+            
+            $user->update($request->all());
+
+            return redirect()->back()->with('success', 'Profile has been updated!');
+        } else {
+         
+            $user->profile()->create($request->all());
+
+            return redirect()->back()->with('success', 'Profile has been created!');
+        }
+    }
+
+
+    public function showPasswordForm()
+    {
+        return view('admin.page.password');
+    }
+
+
 
     /**
      * Store a newly created resource in storage.
