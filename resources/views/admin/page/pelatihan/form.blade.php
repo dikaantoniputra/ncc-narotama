@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xl-12 mx-auto">
-        <h6 class="mb-0 text-uppercase">Horizontal Form</h6>
-        <hr />
+        <h6 class="mb-0 text-uppercase">Horizontal Form Materi</h6>
+        <hr/>
         <div class="card border-top border-0 border-4 border-info">
             <div class="card-body">
                 <div class="border p-4 rounded">
@@ -10,53 +10,86 @@
                         </div>
                         <h5 class="mb-0 text-info">@yield('title') Registration</h5>
                     </div>
-                    <hr />
+                    <hr/>
 
                     <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Kategori Pendidikan</label>
+                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Kategori Pelajaran</label>
                         <div class="col-sm-9">
-                            <select class="form-select" id="role" name="pendidikan_id">
-                                @foreach ($pendidikan as $r)
-                                    <option value="{{ $r->id }}"
-                                        {{ !empty($pelajaran) && $pelajaran->pendidikan_id == $r->id ? 'selected' : (old('pendidikan_id') == $r->id ? 'selected' : '') }}>
-                                        {{ $r->nama_pendidikan }}</option>
+                            <select class="form-select" id="role" name="kategori_pelatihan_id">
+                                @foreach($kategori as $r)
+                                    <option value="{{ $r->id }}">{{ $r->kategori }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Tentor Pelajaran</label>
-                        <div class="col-sm-9">
-                            <select class="form-select" id="role" name="user_id">
-                                @foreach ($user as $u)
-                                    <option value="{{ $u->id }}"
-                                        {{ !empty($pelajaran) && $pelajaran->user_id == $u->id ? 'selected' : (old('user_id') == $u->id ? 'selected' : '') }}>
-                                        {{ $u->name }}</option>
-                                @endforeach
-                            </select>
+                        <h4 class="mb-4">nama_pelatihan</h4>
+                        <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="nama_pelatihan" value="{{ $pelatihan->nama_pelatihan ?? '' }}">
+                    </div>
+
+                    <div class="row mb-3">
+                        <h4 class="mb-4">nama_penyelenggara</h4>
+                        <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="nama_penyelenggara" value="{{ $pelatihan->nama_penyelenggara ?? '' }}">
+                    </div>
+
+                
+
+                    <div class="row mb-3">
+                    <h4 class="mb-4">deskripsi</h4>
+							<textarea id="mytextarea" name="deskripsi">{{ $pelatihan->deskripsi ?? '' }}</textarea>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-xl-12 mx-auto">
+                            <h6 class="mb-0 text-uppercase">dokumentasi_pelatihan</h6>
+                            <hr/>
+                            <div class="card">
+                                <div class="card-body">                      
+                                        <input  type="file" name="dokumentasi_pelatihan" >
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="inputPhoneNo2" class="col-sm-3 col-form-label">Nama Pelajaran </label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputPhoneNo2" placeholder="Nama Pelajaran"
-                                name="nama_pelajaran" value="{{ $pelajaran->nama_pelajaran ?? '' }}">
+                        <div class="col-xl-12 mx-auto">
+                            <h6 class="mb-0 text-uppercase">poster</h6>
+                            <hr/>
+                            <div class="card">
+                                <div class="card-body">                      
+                                        <input  type="file" name="poster" >
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="row mb-3">
-                        <label for="inputEmailAddress2" class="col-sm-3 col-form-label">Harga</label>
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="inputEmailAddress2" placeholder="Harga"
-                                name="harga_pelajaran" value="{{ $pelajaran->harga_pelajaran ?? '' }}">
-                        </div>
+                        <h4 class="mb-4">max_peserta</h4>
+                        <input type="number" class="form-control"  placeholder="Enter Your Pendidikan" name="max_peserta" value="{{ $pelatihan->max_peserta ?? '' }}">
                     </div>
 
 
+                    {{-- <div class="row mb-3">
+                        <div class="col-xl-12 mx-auto">
+                            <h6 class="mb-0 text-uppercase">File Materi</h6>
+                            <hr/>
+                            <div class="card">
+                                <div class="card-body">
+                                   
+                                        <input id="image-uploadify" type="file" name="materi[]" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                                        
+                                        <!-- Tampilkan data file materi -->
+                                    
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                          
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
-                        <div class="col-sm-9">
+                        <div class="col-xl-12">
                             <button type="submit" class="btn btn-info px-5">Register</button>
                         </div>
                     </div>

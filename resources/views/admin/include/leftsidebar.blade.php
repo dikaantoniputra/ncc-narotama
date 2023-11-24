@@ -56,7 +56,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/pelatihan') }}">
+                <a href="{{ url('admin/pelatihans') }}">
                     <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
                     <div class="menu-title">Pelatihan</div>
@@ -65,14 +65,14 @@
 
             <li class="menu-label">Master Lowongan</li>
             <li>
-                <a href="{{ url('admin/kategoripelatihans') }}">
+                <a href="{{ url('admin/kategorilowongans') }}">
                     <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
                     <div class="menu-title">Ketegori</div>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/pelatihan') }}">
+                <a href="{{ url('admin/lowongans') }}">
                     <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
                     <div class="menu-title">Lowongan</div>
@@ -80,25 +80,7 @@
             </li>
 
 
-            <li class="menu-label">Mater Umum</li>
-
-            <li>
-                <a href="{{ url('transaksi') }}">
-                    <div class="parent-icon"><i class="bx bx-lock"></i>
-                    </div>
-                    <div class="menu-title">Transaksi</div>
-                </a>
-
-            </li>
-
-            <li>
-                <a href="{{ url('laporan') }}">
-                    <div class="parent-icon"><i class="bx bx-lock"></i>
-                    </div>
-                    <div class="menu-title">Laporan</div>
-                </a>
-
-            </li>
+            
 
 
         </ul>

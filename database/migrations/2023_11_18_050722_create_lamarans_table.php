@@ -21,7 +21,7 @@ class CreateLamaransTable extends Migration
             $table->string('dokumen_lamaran');
             $table->text('dokumen_transkrip');
             $table->string('dokumentasi_tambahan');
-            $table->integer('status');
+            $table->integer('status')->default(0); // Ganti tipe data menjadi enum
             $table->foreign('lowongan_id')->references('id')->on('lowongans')->onDelete('cascade');
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswas')->onDelete('cascade');
             $table->timestamps();

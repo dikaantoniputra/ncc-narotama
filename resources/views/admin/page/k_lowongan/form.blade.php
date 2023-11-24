@@ -12,9 +12,9 @@
                     </div>
                     <hr/>
                     <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Pendidikan</label>
+                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">kategori</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Enter Your Pendidikan" name="nama_pendidikan" value="{{ $pendidikan->nama_pendidikan ?? '' }}">
+                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Enter Your kategori" name="kategori" value="{{ $kategoripelatihans->kategori ?? '' }}">
                         </div>
                     </div>
                     <div class="row">

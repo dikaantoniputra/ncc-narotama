@@ -4,6 +4,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\KategoriLowonganController;
 use App\Http\Controllers\KategoriPelatihanController;
 
 /*
@@ -34,7 +37,10 @@ Route::get('/', function () {
 
 Route::resource('beritas', BeritaController::class);
 Route::resource('kategoripelatihans', KategoriPelatihanController::class);
+Route::resource('pelatihans', PelatihanController::class);
 
+Route::resource('kategorilowongans', KategoriLowonganController::class);
+Route::resource('lowongans', LowonganController::class);
 
 });
 

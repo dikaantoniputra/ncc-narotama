@@ -1,7 +1,7 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('title')
-pendidikan
+Pelajaran
 @endsection
 
 @push('after-style')
@@ -9,13 +9,14 @@ pendidikan
 @endpush
 
 @section('content')
+
 <div class="row row-deck row-cards">
     <div class="col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('pendidikan.store') }}" id="form">
+                <form method="POST" action="{{ route('lowongans.store') }}" id="form" enctype="multipart/form-data">
                     @csrf
-                    @include('page.pendidikan.form')
+                    @include('admin.page.lowongan.form')
                 </form>
             </div>
         </div>

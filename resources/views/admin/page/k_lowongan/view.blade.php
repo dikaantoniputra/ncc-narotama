@@ -1,7 +1,7 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('title')
-    Pendidikan
+    Kategori Lowongan
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('pendidikan.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
+                <a href="{{ route('kategorilowongans.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
                 <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
@@ -42,19 +42,12 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Slug</th>
                             <th>Pendidikan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- <tr>                                               
-                            <td>
-                                <button type="button" class="btn btn-warning ">Edit</button>
-								<button type="button" class="btn btn-primary ">Primary</button>
-								<button type="button" class="btn btn-danger ">Danger</button>
-                            <td>
-                        </tr> --}}
+                        
                     </tbody>
                    
                 </table>
@@ -82,13 +75,12 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     ajax: {
-        url: '{{ route('pendidikan.index') }}',
+        url: '{{ route('kategorilowongans.index') }}',
         
     },
     columns: [
             {data: 'id', name: 'id'}, 
-            {data: 'slug', name: 'email'},     
-            {data: 'nama_pendidikan', name: 'name_submitter'}, 
+            {data: 'kategori', name: 'kategori'},     
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ] 
     });

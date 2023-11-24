@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->string('role');
-            $table->integer('status');
+            $table->integer('status')->default(0); // Ganti tipe data menjadi enum
             $table->timestamps();
         });
     }

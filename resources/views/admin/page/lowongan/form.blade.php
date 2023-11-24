@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xl-12 mx-auto">
-        <h6 class="mb-0 text-uppercase">@yield('title') Form</h6>
+        <h6 class="mb-0 text-uppercase">Horizontal Form Materi</h6>
         <hr/>
         <div class="card border-top border-0 border-4 border-info">
             <div class="card-body">
@@ -11,16 +11,63 @@
                         <h5 class="mb-0 text-info">@yield('title') Registration</h5>
                     </div>
                     <hr/>
+
                     <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Pendidikan</label>
+                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Kategori Pelajaran</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Enter Your Pendidikan" name="nama_pendidikan" value="{{ $pendidikan->nama_pendidikan ?? '' }}">
+                            <select class="form-select" id="role" name="kategori_lowongan_id">
+                                @foreach($kategori as $r)
+                                    <option value="{{ $r->id }}">{{ $r->kategori }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
+
+                    <div class="row mb-3">
+                        <h4 class="mb-4">nama_perusahaan</h4>
+                        <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="nama_perusahaan" value="{{ $lowongan->nama_perusahaan ?? '' }}">
+                    </div>
+
+                    <div class="row mb-3">
+                        <h4 class="mb-4">title_pekerjaan</h4>
+                        <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="title_pekerjaan" value="{{ $lowongan->title_pekerjaan ?? '' }}">
+                    </div>
+
+                
+
+                    <div class="row mb-3">
+                    <h4 class="mb-4">deskripsi_pekerjaan</h4>
+							<textarea id="mytextarea" name="deskripsi_pekerjaan">{{ $lowongan->deskripsi_pekerjaan ?? '' }}</textarea>
+                    </div>
+
+                    <div class="row mb-3">
+                        <h4 class="mb-4">syarat_pekerjaan</h4>
+                        <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="syarat_pekerjaan" value="{{ $lowongan->syarat_pekerjaan ?? '' }}">
+                    </div>
+
+                    <div class="row mb-3">
+                        <h4 class="mb-4">kompetensi_pekerjaan</h4>
+                        <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="kompetensi_pekerjaan" value="{{ $lowongan->kompetensi_pekerjaan ?? '' }}">
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-xl-12 mx-auto">
+                            <h6 class="mb-0 text-uppercase">logo</h6>
+                            <hr/>
+                            <div class="card">
+                                <div class="card-body">                      
+                                        <input  type="file" name="logo" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
-                        <div class="col-sm-9">
-                            <button type="submit" class="btn btn-info px-5">Simpan</button>
+                        <div class="col-xl-12">
+                            <button type="submit" class="btn btn-info px-5">Register</button>
                         </div>
                     </div>
                 </div>

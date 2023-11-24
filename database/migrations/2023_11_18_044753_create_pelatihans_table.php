@@ -16,19 +16,19 @@ class CreatePelatihansTable extends Migration
         Schema::create('pelatihans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('kategori_pelatihan_id');
-            $table->unsignedBigInteger('admin_id'); // Tambahkan kolom admin_id sebagai foreign key
+            $table->unsignedBigInteger('user_id'); // Tambahkan kolom admin_id sebagai foreign key
             $table->string('nama_pelatihan');
             $table->string('nama_penyelenggara');
             $table->text('deskripsi');
             $table->string('dokumentasi_pelatihan');
             $table->string('poster');
             $table->integer('max_peserta');
-            $table->integer('status'); // Ganti tipe data menjadi enum
+            $table->integer('status')->default(0); // Ganti tipe data menjadi enum
             $table->timestamps();
 
             // Tambahkan foreign key untuk admin_id
             $table->foreign('kategori_pelatihan_id')->references('id')->on('kategori_pelatihans');
-            $table->foreign('admin_id')->references('id')->on('admins');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

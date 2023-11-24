@@ -16,16 +16,16 @@ class CreateLowongansTable extends Migration
         Schema::create('lowongans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('kategori_lowongan_id');
-            $table->unsignedBigInteger('admin_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('logo');
             $table->string('nama_perusahaan');
             $table->string('title_pekerjaan');
-            $table->string('deskripsi_pekerjaan');
+            $table->text('deskripsi_pekerjaan');
             $table->string('syarat_pekerjaan');
             $table->string('kompetensi_pekerjaan');
-            $table->integer('status');
+            $table->integer('status')->default(0); // Ganti tipe data menjadi enum;
             $table->foreign('kategori_lowongan_id')->references('id')->on('kategori_lowongans')->onDelete('cascade');
-            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
