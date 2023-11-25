@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('title')
 Pelajaran
@@ -13,9 +13,9 @@ Pelajaran
     <div class="col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('materi.store') }}" id="form" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('beritas.store') }}" id="form" enctype="multipart/form-data">
                     @csrf
-                    @include('page.materi.form')
+                    @include('admin.page.berita.form')
                 </form>
             </div>
         </div>

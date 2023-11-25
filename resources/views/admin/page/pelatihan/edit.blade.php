@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('title')
 Edit Pelajaran
@@ -9,11 +9,11 @@ Edit Pelajaran
     <div class="col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('pelajaran.update', $pelajaran) }}" id="form" autocomplete="off"
+                <form method="POST" action="{{ route('pelatihans.update', $pelatihan) }}" id="form" autocomplete="off"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                    @include('page.pelajaran.form')
+                    @include('admin.page.pelatihan.form')
                 </form>
             </div>
         </div>

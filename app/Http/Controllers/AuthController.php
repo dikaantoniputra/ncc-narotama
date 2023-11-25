@@ -24,11 +24,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|string',
+            'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
             if (Auth::user()->role === 'admin') {
@@ -42,7 +42,7 @@ class AuthController extends Controller
             }
         }
 
-        return redirect()->back()->withInput()->withErrors(['email' => 'email or password is invalid']);
+        return redirect()->back()->withInput()->withErrors(['username' => 'email or password is invalid']);
     }
 
 

@@ -1,7 +1,7 @@
-@extends('layout.master')
+@extends('admin.layout.master')
 
 @section('title')
-    Pelajaran
+    Pelatihan
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
             <div class="ms-auto">
                 @if (Auth::user()->role == 'admin')
                     <div class="btn-group">
-                        <a href="{{ route('pelajaran.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
+                        <a href="{{ route('pelatihans.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
                        
                        
                     </div>
@@ -38,13 +38,12 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Pendidikan</th>
-                                <th>Tentor</th>
-                                <th>Pelajaran</th>
-                                <th>Harga</th>
-                                @if (Auth::user()->role == 'admin')
-                                    <th>Action</th>
-                                @endif
+                                <th>Kategori</th>
+                                <th>User</th>
+                                <th>Judul</th>
+                                <th>Nama Penyelenggara</th>
+                                <th>Max Peserta</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,7 +70,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('pelajaran.index') }}',
+                    url: '{{ route('pelatihans.index') }}',
 
                 },
                 columns: [{
@@ -79,29 +78,33 @@
                         name: 'id'
                     },
                     {
-                        data: 'pendidikan.nama_pendidikan',
-                        name: 'pendidikan.nama_pendidikan'
+                        data: 'kategoripelatihan.kategori',
+                        name: 'kategoripelatihan.kategori'
                     },
                     {
                         data: 'user.name',
                         name: 'user.name'
                     },
                     {
-                        data: 'nama_pelajaran',
-                        name: 'nama_pelajaran'
+                        data: 'nama_pelatihan',
+                        name: 'nama_pelatihan'
                     },
                     {
-                        data: 'harga_pelajaran',
-                        name: 'harga_pelajaran'
+                        data: 'nama_penyelenggara',
+                        name: 'nama_penyelenggara'
                     },
-                    @if (Auth::user()->role == 'admin')
+                    {
+                        data: 'max_peserta',
+                        name: 'max_peserta'
+                    },
+                  
                         {
                             data: 'action',
                             name: 'action',
                             orderable: false,
                             searchable: false
                         }
-                    @endif
+                 
 
                 ]
             });
