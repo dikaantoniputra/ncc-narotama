@@ -5,7 +5,7 @@
             <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <p class="pt-3">BIMBINGAN BELAJAR ENTINA SMART</p>
+            <p class="pt-3 text-blue-500">NAROTAMA CAREER CENTER</p>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
