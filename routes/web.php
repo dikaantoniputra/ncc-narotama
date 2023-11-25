@@ -21,7 +21,6 @@ use App\Http\Controllers\KategoriPelatihanController;
 */
 
 
-
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
