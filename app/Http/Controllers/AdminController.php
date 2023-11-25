@@ -10,6 +10,11 @@ use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+
+
+
 class AdminController extends Controller
 {
     /**
@@ -77,60 +82,30 @@ class AdminController extends Controller
     }
 
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function updatePassword(Request $request)
     {
-        //
-    }
+        $user = Auth::user();
+    
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+    
+        // Check if the old password matches the user's current password
+        if (!Hash::check($request->old_password, $user->password)) {
+            return redirect()->back()->with('error', 'Password Lama Salah');
+        }
+    
+        // Update the user's password
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+    
+        // Show success message
+        Session::flash('success', 'Password berhasil diubah.');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Admin $admin)
-    {
-        //
+        // dd(session('success'));
+    
+        return redirect()->route('profile.password');
     }
 }
