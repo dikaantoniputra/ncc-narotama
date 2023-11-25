@@ -20,6 +20,14 @@ use App\Http\Controllers\KategoriPelatihanController;
 |
 */
 
+Route::get('/', [LandingController::class, 'home'])->name('user.page.home'); 
+Route::get('/berita', [LandingController::class, 'news'])->name('user.page.news'); 
+Route::get('/berita/detail', [LandingController::class, 'detailNews'])->name('user.page.detailNews');  
+Route::get('/pelatihan', [LandingController::class, 'course'])->name('user.page.course'); 
+Route::get('/pelatihan/detail', [LandingController::class, 'detailCourse'])->name('user.page.detailCourse');  
+Route::get('/lowongan', [LandingController::class, 'vacancy'])->name('user.page.vacancy'); 
+Route::get('/lowongan/detail', [LandingController::class, 'detailVacancy'])->name('user.page.detailVacancy'); 
+
 
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
