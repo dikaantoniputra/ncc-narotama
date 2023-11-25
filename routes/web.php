@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\AdminController;
 use App\Models\User;
 use App\Models\Siswa;
@@ -13,12 +12,9 @@ use Illuminate\Http\Request;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-=======
 
->>>>>>> 413b36baee06c772ea6d689c5aa4ad1c8e8acf7c
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-<<<<<<< HEAD
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
@@ -30,13 +26,11 @@ use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\LaporanController;
-=======
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\KategoriLowonganController;
 use App\Http\Controllers\KategoriPelatihanController;
->>>>>>> 413b36baee06c772ea6d689c5aa4ad1c8e8acf7c
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +62,6 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
 Route::get('/', function () {
 
-<<<<<<< HEAD
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.page.index');
 
     Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
@@ -95,14 +88,12 @@ Route::get('/', function () {
     Route::resource('kelase', KelasController::class);
 
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
-=======
     return view('admin.page.index', );
 })->name('admin.dashboard');
 
 Route::resource('beritas', BeritaController::class);
 Route::resource('kategoripelatihans', KategoriPelatihanController::class);
 Route::resource('pelatihans', PelatihanController::class);
->>>>>>> 413b36baee06c772ea6d689c5aa4ad1c8e8acf7c
 
 Route::resource('kategorilowongans', KategoriLowonganController::class);
 Route::resource('lowongans', LowonganController::class);

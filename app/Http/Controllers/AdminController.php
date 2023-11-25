@@ -17,9 +17,6 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-<<<<<<< HEAD
-        return view('admin.page.index');
-=======
         if ($request->ajax()) {
             $model = 'user';
             // $data = User::select('*');
@@ -41,7 +38,6 @@ class AdminController extends Controller
         }
 
         return view('admin.page.user.view');
->>>>>>> 413b36baee06c772ea6d689c5aa4ad1c8e8acf7c
     }
 
     /**
