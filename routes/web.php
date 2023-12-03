@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\KategoriLowonganController;

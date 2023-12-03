@@ -29,8 +29,8 @@
                                         <h4>John Doe</h4>
                                         <p class="text-secondary mb-1">Full Stack Developer</p>
                                         <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                        <button class="btn btn-primary">Follow</button>
-                                        <button class="btn btn-outline-primary">Message</button>
+                                        <a class="btn btn-primary" href="{{ url('admin/password') }}">Reset Password</a>
+                                        <button class="btn btn-outline-danger">Logout</button>
                                     </div>
                                 </div>
                                 <hr class="my-4" />
@@ -101,7 +101,7 @@
                                 <div class="row">
                                     <div class="col-sm-3"></div>
                                     <div class="col-sm-9 text-secondary">
-                                        <button class="btn btn-primary" type="submit">Follow</button>
+                                        <button class="btn btn-primary" type="submit">Simpan Data</button>
                                     </div>
                                 </div>
                             </div>
