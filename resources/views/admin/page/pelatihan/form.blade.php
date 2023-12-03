@@ -1,19 +1,19 @@
 <div class="row">
     <div class="col-xl-12 mx-auto">
-        <h6 class="mb-0 text-uppercase">Horizontal Form Materi</h6>
+        <h6 class="mb-0 text-uppercase">Tambah Pelatihan</h6>
         <hr/>
-        <div class="card border-top border-0 border-4 border-info">
+        <div class="card border-top border-4 border-info">
             <div class="card-body">
                 <div class="border p-4 rounded">
                     <div class="card-title d-flex align-items-center">
                         <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                         </div>
-                        <h5 class="mb-0 text-info">@yield('title') Registration</h5>
+                        <h5 class="mb-0 text-info">Pelatihan</h5>
                     </div>
                     <hr/>
 
                     <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Kategori Pelajaran</label>
+                        <label for="inputKategori" class="col-sm-3 col-form-label">Kategori Pelatihan</label>
                         <div class="col-sm-9">
                             <select class="form-select" id="role" name="kategori_pelatihan_id">
                                 @foreach($kategori as $r)
@@ -25,12 +25,12 @@
 
                     <div class="row mb-3">
                         <h4 class="mb-4">nama_pelatihan</h4>
-                        <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="nama_pelatihan" value="{{ $pelatihan->nama_pelatihan ?? '' }}">
+                        <input type="text" class="form-control"  placeholder="Enter Your Pelatihan" name="nama_pelatihan" value="{{ $pelatihan->nama_pelatihan ?? '' }}">
                     </div>
 
                     <div class="row mb-3">
                         <h4 class="mb-4">nama_penyelenggara</h4>
-                        <input type="text" class="form-control"  placeholder="Enter Your Pendidikan" name="nama_penyelenggara" value="{{ $pelatihan->nama_penyelenggara ?? '' }}">
+                        <input type="text" class="form-control"  placeholder="Enter Your Pelatihan" name="nama_penyelenggara" value="{{ $pelatihan->nama_penyelenggara ?? '' }}">
                     </div>
 
                 
@@ -66,7 +66,7 @@
 
                     <div class="row mb-3">
                         <h4 class="mb-4">max_peserta</h4>
-                        <input type="number" class="form-control"  placeholder="Enter Your Pendidikan" name="max_peserta" value="{{ $pelatihan->max_peserta ?? '' }}">
+                        <input type="number" class="form-control"  placeholder="Masukan Kuota Peserta" name="max_peserta" value="{{ $pelatihan->max_peserta ?? '' }}">
                     </div>
 
 
@@ -90,7 +90,7 @@
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
                         <div class="col-xl-12">
-                            <button type="submit" class="btn btn-info px-5">Register</button>
+                            <button type="submit" class="btn btn-info px-5 text-white">Tambah Pelatihan</button>
                         </div>
                     </div>
                 </div>

@@ -42,14 +42,30 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Pendidikan</th>
+                            <th>Kategori</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        @forelse ($kategoriPelatihan as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->kategori }}</td>
+                                <td class="flex gap-[10px]">
+                                    <a href="{{ route('akun.edit', $item->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>
+                                    <form action="{{ route('kategoripelatihans.destroy', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-white px-[10px] py-[5px] bg-red-500 rounded-lg" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <div>
+                                Data Kosong
+                            </div>
+                        @endforelse
                     </tbody>
-                   
                 </table>
             </div>
         </div>
@@ -71,7 +87,7 @@
 
 // lek onok datae
 $(document).ready(function() {
-    $('#example').DataTable({
+    $('dataKategori').DataTable({
     processing: true,
     serverSide: true,
     ajax: {

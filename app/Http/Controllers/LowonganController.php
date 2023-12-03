@@ -38,7 +38,7 @@ class LowonganController extends Controller
                 ->make(true);
         }
 
-        return view('admin.page.lowongan.view');
+        return view('admin.page.lowongan.view', ["title" => "Data Lowongan"]);
     }
 
 

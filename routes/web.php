@@ -8,6 +8,8 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\KategoriLowonganController;
 use App\Http\Controllers\KategoriPelatihanController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +35,12 @@ Route::get('/login', [AuthController::class, 'index'])->name('login')->middlewar
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
-
-
+/* Akun Mahasiswa */
+Route::resource('akun', MahasiswaController::class);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
 Route::get('/', function () {
-    return view('admin.page.index', );
+    return view('admin.page.index', ["title" => "Dashboard Admin"] );
 })->name('admin.dashboard');
 
 Route::get('/profile', [AdminController::class, 'profile']);

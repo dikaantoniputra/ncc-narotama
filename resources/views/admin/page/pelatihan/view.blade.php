@@ -47,7 +47,29 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @forelse ($dataPelatihan as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->kategoripelatihan->kategori }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->nama_pelatihan }}</td>
+                                    <td>{{ $item->nama_penyelenggara }}</td>
+                                    <td>{{ $item->max_peserta }}</td>
+                                    <td class="flex gap-[10px]">
+                                        <a href="{{ route('pelatihans.show', $item->id) }}" class="text-white px-[10px] py-[5px] bg-green-500 rounded-lg">Lihat</a>
+                                        <a href="{{ route('pelatihans.edit', $item->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>
+                                        <form action="{{ route('pelatihans.destroy', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-white px-[10px] py-[5px] bg-red-500 rounded-lg" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <div>
+                                    Data Kosong
+                                </div>
+                            @endforelse
                         </tbody>
 
                     </table>
@@ -66,7 +88,7 @@
 
 
         $(document).ready(function() {
-            $('#example').DataTable({
+            $('pelatihan').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {

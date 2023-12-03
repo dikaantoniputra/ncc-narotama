@@ -39,7 +39,7 @@ class AdminController extends Controller
                 ->make(true);
         }
 
-        return view('admin.page.user.view');
+        return view('admin.page.user.view', ["title" => "Dashboard Admin"]);
     }
 
     /**

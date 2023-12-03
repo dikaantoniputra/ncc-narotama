@@ -19,7 +19,12 @@ class User extends Authenticatable
     protected $guarded = [];
 
     protected $fillable = [
-        'username', 'email', 'password',
+        'username', 
+        'password',
+        'name',
+        'email', 
+        'phone', 
+        'role', 
     ];
 
     /**
@@ -40,7 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-   
+   //Relasi tabel mahasiswa
+   public function mahasiswa()
+   {
+    return $this->hasOne(Mahasiswa::class);
+   }
 
 
 

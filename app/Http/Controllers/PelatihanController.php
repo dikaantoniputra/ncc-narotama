@@ -18,7 +18,7 @@ class PelatihanController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
+        /* if ($request->ajax()) {
             $model = 'pelatihan';
             // $data = User::select('*');
             return Datatables::of(Pelatihan::with('user','kategoripelatihan'))
@@ -37,9 +37,11 @@ class PelatihanController extends Controller
             ->rawColumns(['action'])
 
                 ->make(true);
-        }
+        } */
 
-        return view('admin.page.pelatihan.view');
+        $dataPelatihan = Pelatihan::all();
+
+        return view('admin.page.pelatihan.view',compact('dataPelatihan'), ["title" => "Data Pelatihan"]);
     }
 
     /**
@@ -52,7 +54,7 @@ class PelatihanController extends Controller
         //
         $kategori = KategoriPelatihan::all();
 
-        return view('admin.page.pelatihan.create', compact('kategori'));
+        return view('admin.page.pelatihan.create', compact('kategori'), ["title" => "Buat Kategori Pelatihan"]);
     }
 
     /**
@@ -94,7 +96,7 @@ class PelatihanController extends Controller
 
     
             $request->session()->flash('success', 'Berhasil menambahkan.');
-            return redirect()->route('lowongans.index')->with('success', 'Data berhasil disimpan.');
+            return redirect()->route('pelatihans.index')->with('success', 'Data berhasil disimpan.');
     
         } catch (\Exception $e) {
             $request->session()->flash('error', 'Gagal menambahkan.');
@@ -200,7 +202,7 @@ class PelatihanController extends Controller
             $Pelatihan->delete();
             return redirect()->back()->withInput()->with('success', 'Kegiatan Berhasil Di Tambahkan.');
         } else {
-            return redirect()->back()->withInput()->with('success', 'Kegiatan Berhasil Di Tambahkan.');
+            return redirect()->back()->withInput()->with('failed', 'Kegiatan Gagal Di Hapus.');
         }
     }
 }

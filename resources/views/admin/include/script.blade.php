@@ -71,3 +71,19 @@
 	<script src="{{ asset('assets/js/index.js') }}"></script>
 	<!--app JS-->
 	<script src="{{ asset('assets/js/app.js') }}"></script>
+
+{{-- No Urut Tabel --}}
+<script>
+	// Ambil semua elemen <td> dengan class "nomor-urut"
+	const nomorUrutElems = document.querySelectorAll('.nomor-urut');
+
+	// Update nomor urut pada setiap elemen <td>
+	function updateNomorUrut() {
+		nomorUrutElems.forEach((elem, index) => {
+			elem.textContent = index + 1;
+		});
+	}
+
+	// Panggil fungsi updateNomorUrut saat halaman selesai dimuat
+	window.onload = updateNomorUrut;
+</script>

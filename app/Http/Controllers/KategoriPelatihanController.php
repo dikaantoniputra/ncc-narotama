@@ -18,7 +18,7 @@ class KategoriPelatihanController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
+        /* if ($request->ajax()) {
             $model = 'kategoripelatihan';
             // $data = User::select('*');
             return Datatables::of(KategoriPelatihan::select('*'))
@@ -37,9 +37,11 @@ class KategoriPelatihanController extends Controller
             ->rawColumns(['action'])
 
                 ->make(true);
-        }
+        } */
 
-        return view('admin.page.k_pelatihan.view');
+        $kategoriPelatihan = KategoriPelatihan::all();
+
+        return view('admin.page.k_pelatihan.view', compact('kategoriPelatihan'), ["title" => "Kategori Pelatihan"]);
     }
 
     /**
@@ -49,7 +51,7 @@ class KategoriPelatihanController extends Controller
      */
     public function create()
     {
-        return view('admin.page.k_pelatihan.create');
+        return view('admin.page.k_pelatihan.create', ["title" => "Tambah Kategori Pelatihan"]);
     }
     /**
      * Store a newly created resource in storage.
@@ -100,6 +102,7 @@ class KategoriPelatihanController extends Controller
         $kategoripelatihans = KategoriPelatihan::select('*')->findOrFail($id);
         return view('admin.page.k_pelatihan.edit', [
             'kategoripelatihans' => $kategoripelatihans,
+            "title" => "Edit Kategori Pelatihan",
         ]);
        
     }

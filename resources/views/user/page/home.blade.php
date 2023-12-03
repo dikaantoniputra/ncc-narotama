@@ -133,7 +133,21 @@
         </div>
         {{-- Card Pelatihan --}}
         <div class="grid lg:grid-cols-3 grid-cols-1 gap-[28px]">
-            <div class="h-full bg-white rounded-[8px]">
+            @forelse ($latestCourse as $item)
+                <div class="h-full bg-white rounded-[8px]">
+                    <img src="{{ asset('uploads/' . $item->poster) }}" alt="Card Image {{ $item->nama_pelatihan }}" class="rounded-tl-[8px] rounded-tr-[8px] w-[408px] h-[212px]">
+                    <div class="p-[20px]">
+                        <div class="text-[12px] font-bold text-black"><span class="bg-[#F5F500] px-[12px] py-[4px] rounded-[20px]">{{ $item->kategoripelatihan->kategori }}</span></div>
+                        <a href="#" class="my-[8px] text-[#444] text-[20px] font-semibold">{{ $item->nama_pelatihan }}</a>
+                        <div class="text-[#606060] text-[16px] font-medium text-justify">
+                            {{ $item->deskripsi }}
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div>Mohon maaf, pelatihan saat ini belum tersedia</div>
+            @endforelse
+            {{-- <div class="h-full bg-white rounded-[8px]">
                 <img src="assets/images/homepage-images/cards-image/course/card1.png" alt="card1" class="rounded-tl-[8px] rounded-tr-[8px]">
                 <div class="p-[20px]">
                     <div class="text-[12px] font-bold text-black"><span class="bg-[#F5F500] px-[12px] py-[4px] rounded-[20px]">Webinar</span></div>
@@ -168,7 +182,7 @@
                         sed eiusmod tempor incididunt ...
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     {{-- Section - Lowongan --}}
