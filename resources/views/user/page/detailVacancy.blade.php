@@ -4,13 +4,13 @@
     {{-- Section - Head Button --}}
     <section class="bg-[#F7F7F7] lg:px-[120px] px-[60px] lg:py-[60px] py-[30px] flex flex-wrap lg:justify-between items-center">
         <div class="flex flex-wrap gap-[43px]">
-            <img class="bg-[#C7C7C7] w-[140px] h-[140px] rounded-[6px]" src="#" alt="logoPerusahaan">
+            <img class="bg-[#C7C7C7] w-[140px] h-[140px] rounded-[6px]" src="{{ asset('uploads/' . $detailVacancy->logo) }}" alt="logoPerusahaan">
             <div class="justify-center my-auto">
                 <div class="mb-[12px] text-[28px] font-semibold text-[#2C2C2C]">
-                    Software Consultant Intern
+                    {{ $detailVacancy->title_pekerjaan }}
                 </div>
                 <div class="mb-[18px] text-[20px] font-medium text-[#2C2C2C]">
-                    PT Inosoft Teknologi Surabaya
+                    {{ $detailVacancy->nama_perusahaan }}
                 </div>
                 <div class="flex gap-[20px]">
                     <div class="flex gap-[8px] items-center text-[#606060] text-[12px]">
@@ -34,7 +34,7 @@
                             <path d="M5.33301 1.33337V4.00004" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M2 6.66663H14" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>                            
-                        Diupload pada 13 Oktober 2023
+                        Diupload pada {{ \Carbon\Carbon::parse($detailVacancy->created_at)->format('d M Y') }}
                     </div>
                 </div>
             </div>
@@ -45,12 +45,22 @@
             </button>
         </div>
     </section>
+    {{-- Flash Message --}}
+    @if (session('success'))
+        <div>
+            {{ session('success') }}
+        </div>
+    @else
+        <div>
+            {{ session('error') }}
+        </div>
+    @endif
 
     {{-- Section - Detail Deskripsi Lowongan --}}
     <section class="bg-white lg:px-[298px] px-[40px] lg:py-[80px] py-[80px]">
         <div class="flex gap-[20px]">
             <span class="bg-[#F5F500] px-[12px] py-[4px] rounded-[20px] text-[12px] font-bold">
-                Magang
+                {{ $detailVacancy->kategorilowongan->kategori ?? 'Kategori Kosong' }}
             </span>
             <span class="bg-[#4176CF] px-[12px] py-[4px] rounded-[20px] text-[12px] font-bold text-white">
                 Dikirim
@@ -60,42 +70,19 @@
             <div class="mb-[28px]">
                 <h1 class="text-[#2C2C2C] font-bold text-[16px] pb-[20px]">Deskripsi Pekerjaan</h1>
                 <div class="text-[16px] text-[#2C2C2C] font-medium">
-                    We are looking for a talented and committed Front-End Developer to join our development 
-                    team for one time project. You will play a key role in creating engaging and responsive user 
-                    interfaces using technologies such as Vue.js, JavaScript, HTML, and CSS. <br><br>
-
-                    Additional Benefits: <br>
-                    1. Experience with Front-End development tools like Webpack, Babel, or ESLint. <br>
-                    2. Knowledge of component-based development. <br>
-                    3. Familiarity with Agile development methodologies. <br><br>
-
-
-                    We look forward to candidates who are passionate about delivering an exceptional user experience. 
-                    If you meet the qualifications and are interested, please send your CV and portfolio to our email 
-                    address.Thank you for your interest in joining our team, let's be a part of a successful business. <br><br>
-                    
-                    Contact : oceandevtech@gmail.com
+                    {!! $detailVacancy->deskripsi_pekerjaan !!}
                 </div>
             </div>
             <div class="mb-[28px]">
                 <h1 class="text-[#2C2C2C] font-bold text-[16px] pb-[20px]">Syarat Pekerjaan</h1>
                 <div class="text-[16px] text-[#2C2C2C] font-medium">
-                    1. Strong work experience in Front-End development with in-depth knowledge of Vue.js, JavaScript, HTML, and CSS. <br>
-                    2. Ability to work independently and in a distributed team. <br>
-                    3. Creativity in designing and developing engaging user interfaces. <br>
-                    4. Strong communication and problem-solving skills. <br>
-                    5. Efficient remote working capabilities. <br>
-                    6. Preferred location in Surabaya, Indonesia. <br>
+                    {{ $detailVacancy->kompetensi_pekerjaan }}
                 </div>
             </div>
             <div>
                 <h1 class="text-[#2C2C2C] font-bold text-[16px] pb-[20px]">Kompetensi Pekerjaan</h1>
                 <div class="text-[16px] text-[#2C2C2C] font-medium">
-                    1. Develop attractive and responsive user interfaces using Vue.js, JavaScript, HTML, and CSS. <br>
-                    2. Collaborate with the development team to design and implement new features. <br>
-                    3. Optimize website performance and ensure cross-device compatibility. <br>
-                    4. Participate in testing and debugging processes to ensure application stability. <br>
-                    5. Research and implement the latest front-end technologies to enhance the user experience. <br>
+                    {{ $detailVacancy->kompetensi_pekerjaan }}
                 </div>
             </div>
         </div>
@@ -106,7 +93,8 @@
     <div id="vacancyForm" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-[1000px] max-h-full">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow">
+            <form action="{{ route('user.storeApplication') }}" enctype="multipart/form-data" method="POST"  class="relative bg-white rounded-lg shadow">
+                @csrf
                 <!-- Modal header -->
                 <div class="flex items-center p-4 md:p-5 border-b rounded-t">
                     <h3 class="text-[20px] font-semibold text-[#2C2C2C] text-center mx-auto">
@@ -115,33 +103,34 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
+                    <input type="hidden" name="lowongan_id" value="{{ $detailVacancy->id }}">
                     <div class="grid lg:grid-cols-2 grid-cols-l">
                         <div>
                             <div class="mb-[12px] font-medium text-[#606060]">
                                 File Resume CV
                             </div>
                             <div class="flex gap-[16px]">
-                                <input type="file" id="file-upload" class="hidden">
-                                <div id="file-name-display" class="p-2 border w-[328px] h-[48px] bg-[#F7F7F7] rounded-[6px]"></div>
+                                <input type="file" id="riwayat" name="dokumen_riwayat" class="">
+                                {{-- <div id="file-riwayat-display" class="p-2 border w-[328px] h-[48px] bg-[#F7F7F7] rounded-[6px]"></div>
                                 <div class="flex items-center">
-                                    <label for="file-upload" class="bg-[#4176CF] text-[12px] font-medium text-white px-4 py-2 rounded cursor-pointer">
+                                    <label for="file-riwayat" class="bg-[#4176CF] text-[12px] font-medium text-white px-4 py-2 rounded cursor-pointer">
                                         Pilih File
                                     </label>     
-                                </div>                                                    
+                                </div>   --}}                                                  
                             </div>
                         </div>
                         <div>
                             <div class="mb-[12px] font-medium text-[#606060]">
-                                File Transkip
+                                File Transkrip CV
                             </div>
                             <div class="flex gap-[16px]">
-                                <input type="file" id="file-upload" class="hidden">
-                                <div id="file-name-display" class="p-2 border w-[328px] h-[48px] bg-[#F7F7F7] rounded-[6px]"></div>
+                                <input type="file" id="transkrip" name="dokumen_transkrip" class="">
+                                {{-- <div id="file-riwayat-display" class="p-2 border w-[328px] h-[48px] bg-[#F7F7F7] rounded-[6px]"></div>
                                 <div class="flex items-center">
-                                    <label for="file-upload" class="bg-[#4176CF] text-[12px] font-medium text-white px-4 py-2 rounded cursor-pointer">
+                                    <label for="file-riwayat" class="bg-[#4176CF] text-[12px] font-medium text-white px-4 py-2 rounded cursor-pointer">
                                         Pilih File
                                     </label>     
-                                </div>                                                    
+                                </div>   --}}                                                  
                             </div>
                         </div>
                     </div>
@@ -151,13 +140,13 @@
                                 File Lamaran
                             </div>
                             <div class="flex gap-[16px]">
-                                <input type="file" id="file-upload" class="hidden">
-                                <div id="file-name-display" class="p-2 border w-[328px] h-[48px] bg-[#F7F7F7] rounded-[6px]"></div>
+                                <input type="file" id="lamaran" name="dokumen_lamaran" class="">
+                                {{-- <div id="file-lamaran-display" class="p-2 border w-[328px] h-[48px] bg-[#F7F7F7] rounded-[6px]"></div>
                                 <div class="flex items-center">
-                                    <label for="file-upload" class="bg-[#4176CF] text-[12px] font-medium text-white px-4 py-2 rounded cursor-pointer">
+                                    <label for="file-lamaran" class="bg-[#4176CF] text-[12px] font-medium text-white px-4 py-2 rounded cursor-pointer">
                                         Pilih File
                                     </label>     
-                                </div>                                                    
+                                </div>       --}}                                              
                             </div>
                         </div>
                         <div>
@@ -165,13 +154,13 @@
                                 File Pendukung
                             </div>
                             <div class="flex gap-[16px]">
-                                <input type="file" id="file-upload" class="hidden">
-                                <div id="file-name-display" class="p-2 border w-[328px] h-[48px] bg-[#F7F7F7] rounded-[6px]"></div>
+                                <input type="file" id="tambahan" name="dokumen_tambahan" class="">
+                                {{-- <div id="file-name-display" class="p-2 border w-[328px] h-[48px] bg-[#F7F7F7] rounded-[6px]"></div>
                                 <div class="flex items-center">
                                     <label for="file-upload" class="bg-[#4176CF] text-[12px] font-medium text-white px-4 py-2 rounded cursor-pointer">
                                         Pilih File
                                     </label>     
-                                </div>                                                    
+                                </div>  --}}                                                   
                             </div>
                         </div>
                     </div>
@@ -185,7 +174,7 @@
                         </svg>                            
                         Batal
                     </button>
-                    <button data-modal-hide="vacancyForm" type="button" class="text-white bg-[#198754] hover:bg-green-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-[32px] py-[16px] text-center flex items-center gap-[16px]">
+                    <button type="submit" class="text-white bg-[#198754] hover:bg-green-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-[32px] py-[16px] text-center flex items-center gap-[16px]">
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.2158 21H5.21582C4.68539 21 4.17668 20.7893 3.80161 20.4142C3.42653 20.0391 3.21582 19.5304 3.21582 19V5C3.21582 4.46957 3.42653 3.96086 3.80161 3.58579C4.17668 3.21071 4.68539 3 5.21582 3H16.2158L21.2158 8V19C21.2158 19.5304 21.0051 20.0391 20.63 20.4142C20.255 20.7893 19.7463 21 19.2158 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M17.2158 21V13H7.21582V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -194,7 +183,7 @@
                         Simpan
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 @endsection

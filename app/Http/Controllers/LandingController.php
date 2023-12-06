@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriPelatihan;
+use App\Models\Lowongan;
 use App\Models\Pelatihan;
+use App\Models\Peserta;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LandingController extends Controller
 {
@@ -18,7 +22,14 @@ class LandingController extends Controller
             return $item;
         });
 
-        return view('user.page.home',compact('latestCourse'), [
+        $latestVacancy = Lowongan::latest()->take(2)->get();
+
+        $latestVacancy->transform(function ($item) {
+            $item->deskripsi_pekerjaan = Str::words($item->deskripsi_pekerjaan, 30, ' .....');
+            return $item;
+        });
+
+        return view('user.page.home',compact('latestCourse', 'latestVacancy'), [
             "title" => "Beranda"
         ]);
     }
@@ -34,34 +45,6 @@ class LandingController extends Controller
     {
         return view('user.page.detailNews', [
             "title" => "Detail Berita"
-        ]);
-    }
-
-    public function course()
-    {
-        return view('user.page.course', [
-            "title" => "Pelatihan"
-        ]);
-    }
-
-    public function detailCourse()
-    {
-        return view('user.page.detailCourse', [
-            "title" => "Detail Pelatihan"
-        ]);
-    }
-
-    public function vacancy()
-    {
-        return view('user.page.vacancy', [
-            "title" => "Lowongan"
-        ]);
-    }
-
-    public function detailVacancy()
-    {
-        return view('user.page.detailVacancy', [
-            "title" => "Detail Lowongan"
         ]);
     }
 }

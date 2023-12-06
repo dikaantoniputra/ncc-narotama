@@ -9,8 +9,10 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\KategoriLowonganController;
 use App\Http\Controllers\KategoriPelatihanController;
-use App\Http\Controllers\LandingController;
+use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PesertaController;
+use App\Models\Pelatihan;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +27,17 @@ use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', [LandingController::class, 'home'])->name('user.page.home'); 
 Route::get('/berita', [LandingController::class, 'news'])->name('user.page.news'); 
-Route::get('/berita/detail', [LandingController::class, 'detailNews'])->name('user.page.detailNews');  
-Route::get('/pelatihan', [LandingController::class, 'course'])->name('user.page.course'); 
-Route::get('/pelatihan/detail', [LandingController::class, 'detailCourse'])->name('user.page.detailCourse');  
-Route::get('/lowongan', [LandingController::class, 'vacancy'])->name('user.page.vacancy'); 
-Route::get('/lowongan/detail', [LandingController::class, 'detailVacancy'])->name('user.page.detailVacancy'); 
+Route::get('/berita/detail', [LandingController::class, 'detailNews'])->name('user.page.detailNews');
+
+/* Pelatihan */
+Route::get('/pelatihan', [PelatihanController::class, 'course'])->name('user.page.course'); 
+Route::get('/pelatihan/detail/{id}', [PelatihanController::class, 'detailCourse'])->name('user.page.detailCourse');
+Route::post('/pelatihan/daftar', [PelatihanController::class, 'registerCourse'])->name('registerCourse');
+
+
+Route::get('/lowongan', [LowonganController::class, 'vacancy'])->name('user.page.vacancy'); 
+Route::get('/lowongan/detail/{id}', [LowonganController::class, 'detailVacancy'])->name('user.page.detailVacancy');
+Route::post('/lowongan/detail/daftar', [LamaranController::class, 'storeApplication'])->name('user.storeApplication');
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
@@ -40,7 +48,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::resource('akun', MahasiswaController::class);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('admin.page.index', ["title" => "Dashboard Admin"] );
 })->name('admin.dashboard');
 

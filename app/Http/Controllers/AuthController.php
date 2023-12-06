@@ -13,8 +13,6 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
 
-    
-
     public function index()
     {
         return view('admin.auth.index', ["title" => "Login"]);
@@ -38,7 +36,7 @@ class AuthController extends Controller
                 return redirect()->route('tentor.dashboard');
 
             } else {
-                return redirect()->route('siswa.dashboard');
+                return redirect()->route('user.page.home');
             }
         }
 

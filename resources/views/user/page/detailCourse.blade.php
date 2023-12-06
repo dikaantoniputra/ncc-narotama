@@ -3,16 +3,16 @@
 @section('content')
     {{-- Section - Hero --}}
     <section class="bg-[#4176CF] lg:p-[80px] p-[40px] lg:flex max-sm:grid max-sm:grid-cols-1 lg:gap-[60px] my-auto items-center">
-            <img src="../assets/images/course/detail-course/featured.png" alt="featuredimage">
+            <img src="{{ asset('uploads/' . $detailCourse->poster) }}" alt="featuredimage" class="w-[365px] h-[365px]">
         <div class="max-sm:pt-[40px]">
             <div>
-                <div class="text-[12px] font-bold text-black"><span class="bg-[#F5F500] px-[12px] py-[4px] rounded-[20px]">Seminar</span></div>
+                <div class="text-[12px] font-bold text-black"><span class="bg-[#F5F500] px-[12px] py-[4px] rounded-[20px]">{{ $detailCourse->kategoripelatihan->kategori }}</span></div>
             </div>
             <div class="text-white font-semibold text-[36px] my-[20px]">
-                Pelatihan Uji Sertifikasi dan Kompetensi oleh BNSP Surabaya Tahun 2023
+                {{ $detailCourse->nama_pelatihan }}
             </div>
             <div class="text-[16px] text-white font-medium">
-                Diselenggarakan oleh BNSP Surabaya
+                Diselenggarakan oleh {{ $detailCourse->nama_penyelenggara }}
             </div>
         </div>
     </section>
@@ -50,52 +50,35 @@
             <div class="bg-white p-[40px] rounded-[10px]">
                 <div class="pb-[16px] text-[28px] text-[#2C2C2C] font-semibold">Deskripsi Kegiatan</div>
                 <div class="text-[#606060] text-[16px] font-medium">
-                    Halo teman-teman Universitas Narotama Menggali Potensi mahasiswa : 
-                    Peluang Webinar PKM untuk Menciptakan Inovasi <br><br>
-
-                    Gas ikutan join webinar kali ini, untuk menciptakan PKM yang inovatif dan kreatif.
-                    Jangan sampai ketinggalan 🔥<br><br>
-
-                    Free Registration!! <br>
-                    Kuota Terbatas!! <br><br>
-
-                    Benefit : <br>
-                    1. Ilmu dan pengetahuan <br>
-                    2. E-sertifikat <br>
-                    3. Relasi <br>
-                    4. 5 Point SKPAM <br><br>
-
-                    Bergabunglah dalam webinar ini dan temukan ilmu baru untuk menciptakan PKM yang inovatif dan kreatif <br><br>
-
-                    Hari, Tanggal : Senin, 20 November 2023 <br>
-                    Pukul : 12.00 - 12.00 <br>
-                    Lokasi : Google Meeting <br>
-
-                    Tunggu apa lagi? Daftarkan dirimu sekarang!! <br>
-                    Contact Person : 08483489489853 (Pipik) <br>
+                    {!! $detailCourse->deskripsi !!}
                 </div>
             </div>
             <div>
-                <div class="bg-white p-[40px] flex flex-col gap-[24px] mb-[28px]">
-                    <div class="text-[#2C2C2C] text-[28px] font-semibold">
-                        Pendaftaran
+                @if (!$isRegistered)
+                    <form action="{{ route('registerCourse') }}" method="POST" class="bg-white p-[40px] flex flex-col gap-[24px] mb-[28px]">
+                        @csrf
+                        <input type="hidden" name="pelatihan_id" value="{{ $detailCourse->id }}">
+                        <div class="text-[#2C2C2C] text-[28px] font-semibold">
+                            Pendaftaran
+                        </div>
+                        <div class="text-[#606060] text-[16px] font-medium">
+                            Anda belum terdaftar. Silahkan klik tombol dibawah ini untuk mendaftar.
+                        </div>
+                        <button type="submit" class="bg-[#4176CF] px-[32px] py-[16px] text-white text-[16px] font-medium rounded-[10px]">
+                            Daftar Sekarang
+                        </button>
+                    </form>
+                @else
+                    <div class="bg-white p-[40px] flex flex-col gap-[24px] mb-[28px]">
+                        <div class="text-[#2C2C2C] text-[28px] font-semibold">
+                            Pendaftaran
+                        </div>
+                        <div class="text-[#606060] text-[16px] font-medium">
+                            Anda telah terdaftar. Silahkan menghubungi kontak yang 
+                            tersedia untuk informasi lebih lanjut.
+                        </div>
                     </div>
-                    <div class="text-[#606060] text-[16px] font-medium">
-                        Anda belum terdaftar. Silahkan klik tombol dibawah ini untuk mendaftar.
-                    </div>
-                    <button class="bg-[#4176CF] px-[32px] py-[16px] text-white text-[16px] font-medium rounded-[10px]">
-                        Daftar Sekarang
-                    </button>
-                </div>
-                <div class="bg-white p-[40px] flex flex-col gap-[24px] mb-[28px]">
-                    <div class="text-[#2C2C2C] text-[28px] font-semibold">
-                        Pendaftaran
-                    </div>
-                    <div class="text-[#606060] text-[16px] font-medium">
-                        Anda telah terdaftar. Silahkan menghubungi kontak yang 
-                        tersedia untuk informasi lebih lanjut.
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>

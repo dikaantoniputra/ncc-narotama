@@ -19,6 +19,7 @@ class CreatePesertasTable extends Migration
             $table->unsignedBigInteger('mahasiswa_id');
             $table->foreign('pelatihan_id')->references('id')->on('pelatihans')->onDelete('cascade');
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswas')->onDelete('cascade');
+            $table->string('status');
             $table->timestamps();
         });
     }

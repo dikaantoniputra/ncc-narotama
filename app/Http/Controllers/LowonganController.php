@@ -6,7 +6,10 @@ use App\Models\Lowongan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\KategoriLowongan;
+use App\Models\Lamaran;
+use App\Models\Pelatihan;
 
 class LowonganController extends Controller
 {
@@ -17,7 +20,7 @@ class LowonganController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
+        /* if ($request->ajax()) {
             $model = 'lowongan';
             // $data = User::select('*');
             return Datatables::of(Lowongan::with('user','kategorilowongan'))
@@ -36,11 +39,13 @@ class LowonganController extends Controller
             ->rawColumns(['action'])
 
                 ->make(true);
-        }
+        } */
 
-        return view('admin.page.lowongan.view', ["title" => "Data Lowongan"]);
+        $vacancyData = Lowongan::all();
+        
+
+        return view('admin.page.lowongan.view', compact('vacancyData'), ["title" => "Data Lowongan"]);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -76,10 +81,10 @@ class LowonganController extends Controller
     
             // Handle logo file
             if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-                $dokumentasiPelatihanFile = $request->file('logo');
-                $dokumentasiPelatihanFileName = 'dokumentasi_' . time() . '.' . $dokumentasiPelatihanFile->getClientOriginalExtension();
-                $dokumentasiPelatihanFile->move(public_path('uploads/'), $dokumentasiPelatihanFileName);
-                $article->logo = $dokumentasiPelatihanFileName;
+                $logoFile = $request->file('logo');
+                $logoFileName = 'logo_' . time() . '.' . $logoFile->getClientOriginalExtension();
+                $logoFile->move(public_path('uploads/'), $logoFileName);
+                $article->logo = $logoFileName;
             }
     
             // Handle poster file
@@ -89,7 +94,7 @@ class LowonganController extends Controller
 
     
             $request->session()->flash('success', 'Berhasil menambahkan.');
-            return redirect()->route('pelatihans.index')->with('success', 'Data berhasil disimpan.');
+            return redirect()->route('lowongans.index')->with('success', 'Data berhasil disimpan.');
     
         } catch (\Exception $e) {
             $request->session()->flash('error', 'Gagal menambahkan.');
@@ -183,4 +188,63 @@ class LowonganController extends Controller
     {
         //
     }
+
+
+
+    //User View
+    public function vacancy(Request $request)
+    {
+        $latestVacancy = Lowongan::latest()->take(2)->get();
+
+        // Memanipulasi deskripsi sebelum mengirim data ke view
+        $latestVacancy->transform(function ($item) {
+            $item->deskripsi_pekerjaan = Str::words($item->deskripsi_pekerjaan, 15, ' .....'); // Batasi deskripsi menjadi 15 kata
+            return $item;
+        });
+
+        $keywordPositionName = $request->input('title_pekerjaan');
+        $keywordCategory = $request->input('kategori');
+        $keywordCity = $request->input('kota');
+
+        $searchVacancy = Lowongan::when($keywordPositionName, function($query) use ($keywordPositionName) {
+            $query->where('title_pekerjaan', 'like', '%'.$keywordPositionName.'%');
+        })
+        ->when($keywordCategory, function($query) use ($keywordCategory) {
+            $query->whereHas('kategorilowongan', function($q) use ($keywordCategory) {
+                $q->where('kategori', 'like', '%'.$keywordCategory.'%');
+            });
+        })
+        ->when($keywordCity, function($query) use ($keywordCity) {
+            $query->where('kota', 'like', '%'.$keywordCity.'%');
+        })
+        ->paginate(6);
+        
+        $searchVacancy->transform(function ($item) {
+            $item->deskripsi_pekerjaan = Str::words($item->deskripsi_pekerjaan, 15, ' .....'); // Batasi deskripsi menjadi 15 kata
+            return $item;
+        });
+
+        $userId = auth()->id();
+        
+        $haveApplied = Lamaran::all();
+
+        $haveApplied = $haveApplied->sortBy(function ($item) {
+            return $item->status === 'Diterima' ? 0 : 1;
+        });
+
+        return view('user.page.vacancy', compact('latestVacancy', 'searchVacancy'), [
+            "title" => "Lowongan",
+            "haveApplied" => $haveApplied,
+        ]);
+    }
+
+    public function detailVacancy($id)
+    {
+        $detailVacancy = Lowongan::findOrFail($id);
+
+        return view('user.page.detailVacancy', compact('detailVacancy'), [
+            "title" => "Detail Lowongan"
+        ]);
+    }
+    
 }

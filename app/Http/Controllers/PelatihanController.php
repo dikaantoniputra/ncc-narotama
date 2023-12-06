@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Models\KategoriPelatihan;
+use Illuminate\Support\Str;
 use App\Models\Materi;
+use App\Models\Peserta;
 
 class PelatihanController extends Controller
 {
@@ -42,6 +44,90 @@ class PelatihanController extends Controller
         $dataPelatihan = Pelatihan::all();
 
         return view('admin.page.pelatihan.view',compact('dataPelatihan'), ["title" => "Data Pelatihan"]);
+    }
+
+    public function course(Request $request)
+    {   
+        $latestCourse = Pelatihan::latest()->take(3)->get();
+
+        // Memanipulasi deskripsi sebelum mengirim data ke view
+        $latestCourse->transform(function ($item) {
+            $item->deskripsi = Str::words($item->deskripsi, 15, ' .....'); // Batasi deskripsi menjadi 15 kata
+            return $item;
+        });
+
+        $keywordNamaPelatihan = $request->input('nama_pelatihan');
+        $keywordKategori = $request->input('kategori');
+
+        $searchCourse = Pelatihan::when($keywordNamaPelatihan, function($query) use ($keywordNamaPelatihan) {
+            $query->where('nama_pelatihan', 'like', '%'.$keywordNamaPelatihan.'%');
+        })
+        ->when($keywordKategori, function($query) use ($keywordKategori) {
+            $query->whereHas('kategoripelatihan', function($q) use ($keywordKategori) {
+                $q->where('kategori', 'like', '%'.$keywordKategori.'%');
+            });
+        })
+        ->paginate(6);
+        
+        $searchCourse->transform(function ($item) {
+            $item->deskripsi = Str::words($item->deskripsi, 15, ' .....'); // Batasi deskripsi menjadi 15 kata
+            return $item;
+        });
+
+        $userId = auth()->id(); // Mendapatkan ID pengguna yang login
+
+        $registeredCourse = Peserta::all();
+
+        $registeredCourse = $registeredCourse->sortBy(function ($item) {
+            return $item->status === 'Terdaftar' ? 0 : 1;
+        });
+
+        return view('user.page.course', compact('latestCourse', 'searchCourse'), [
+            "title" => "Pelatihan",
+            "registeredCourse" => $registeredCourse
+        ]);
+    }
+
+    public function detailCourse($id)
+    {   
+        $detailCourse = Pelatihan::findOrFail($id);
+
+        // Ambil data pengguna
+        $user = auth()->user();
+
+        // Periksa apakah pengguna sudah terdaftar pada pelatihan tertentu
+        $isRegistered = Peserta::where('pelatihan_id', $detailCourse->id)
+            ->where('mahasiswa_id', $user->id)
+            ->exists();
+
+        return view('user.page.detailCourse', compact('detailCourse'), [
+            "title" => "Detail Pelatihan",
+            "isRegistered" => $isRegistered
+        ]);
+    }
+
+        /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function registerCourse(Request $request)
+    {
+        $validatedData = $request->validate([
+            'pelatihan_id' => 'required|numeric',
+        ]);
+
+        $pelatihanId = $request->input('pelatihan_id');
+        $mahasiswaId = auth()->user()->id;
+
+        $peserta = new Peserta();
+        $peserta->pelatihan_id = $pelatihanId;
+        $peserta->mahasiswa_id = $mahasiswaId;
+        $peserta->status = 'Terdaftar';
+        $peserta->save();
+
+        return redirect()->back()->with('success', 'Anda berhasil mendaftar pada pelatihan ini');
     }
 
     /**
@@ -104,7 +190,6 @@ class PelatihanController extends Controller
             return redirect()->back()->withInput();
         }
     }
-    
 
     /**
      * Display the specified resource.

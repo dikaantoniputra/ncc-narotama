@@ -15,7 +15,7 @@ class KategoriLowonganController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
+        /* if ($request->ajax()) {
             $model = 'kategorilowongan';
             // $data = User::select('*');
             return Datatables::of(KategoriLowongan::select('*'))
@@ -34,9 +34,11 @@ class KategoriLowonganController extends Controller
             ->rawColumns(['action'])
 
                 ->make(true);
-        }
+        } */
 
-        return view('admin.page.k_lowongan.view');
+        $vacancyCategory = KategoriLowongan::all();
+
+        return view('admin.page.k_lowongan.view', compact('vacancyCategory'));
     }
 
 

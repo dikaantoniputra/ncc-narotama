@@ -52,7 +52,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->kategori }}</td>
                                 <td class="flex gap-[10px]">
-                                    <a href="{{ route('akun.edit', $item->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>
+                                    <a href="{{ route('kategoripelatihans.edit', $item->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>
                                     <form action="{{ route('kategoripelatihans.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

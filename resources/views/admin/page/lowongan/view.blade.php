@@ -41,13 +41,37 @@
                                 <th>Kategori</th>
                                 <th>User</th>
                                 <th>Judul</th>
-                                <th>Nama Penyelenggara</th>
-                                <th>Max Peserta</th>
+                                <th>Nama Perusahaan</th>
+                                <th>Kompetensi Pekerjaan</th>
+                                <th>Syarat Pekerjaan</th>
+                                <th>Kota</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @forelse ($vacancyData as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->kategorilowongan->kategori }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->title_pekerjaan }}</td>
+                                    <td>{{ $item->nama_perusahaan }}</td>
+                                    <td>{{ $item->kompetensi_pekerjaan }}</td>
+                                    <td>{{ $item->syarat_pekerjaan }}</td>
+                                    <td>{{ $item->kota }}</td>
+                                    <td class="flex gap-[10px]">
+                                        <a href="{{ route('lowongans.show', $item->id) }}" class="text-white px-[10px] py-[5px] bg-green-500 rounded-lg">Lihat</a>
+                                        <a href="{{ route('lowongans.edit', $item->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>
+                                        <form action="{{ route('lowongans.destroy', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-white px-[10px] py-[5px] bg-red-500 rounded-lg" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <div>Data Kosong</div>
+                            @endforelse
                         </tbody>
 
                     </table>

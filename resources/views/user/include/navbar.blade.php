@@ -13,7 +13,24 @@
             <a href="{{ url('/pelatihan') }}" class="hover:text-[#4176CF] {{ request()->is('pelatihan') ? 'text-[#4176CF]' : ''}}">Pelatihan</a>
             <a href="{{ url('/lowongan') }}" class="hover:text-[#4176CF] {{ request()->is('lowongan') ? 'text-[#4176CF]' : ''}}">Lowongan</a>
         </ul>
-        <a href="#" class="my-auto bg-[#4176CF] text-white px-[20px] py-[10px] rounded-[7px] flex justify-center items-center">Masuk</a>
+        @if (auth()->check())
+          <button type="button" id="profileButton" class="flex my-auto justify-center">
+            <img src="../../assets/images/navbar-images/icon-profile-navbar.png" class="flex my-auto justify-center" alt="Icon Profile">
+          </button>
+        
+          <!-- Dropdown Content -->
+          <div id="profileDropdown" class="absolute right-[10px] top-20 mt-2 w-40 bg-white rounded-md shadow-lg origin-top-right ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+              <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="dashboard">Dashboard</a>
+              <form action="/logout" method="POST">
+                @csrf
+                <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="logout">Logout</button>
+              </form>
+            </div>
+          </div>
+        @else
+          <a href="{{ route('login') }}" class="my-auto bg-[#4176CF] text-white px-[20px] py-[10px] rounded-[7px] flex justify-center items-center">Masuk</a>
+        @endif
     </nav>
 
     {{-- Navbar Mobile --}}
@@ -42,7 +59,46 @@
               <li>
                 <a href="{{ url('/lowongan') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 {{ request()->is('lowongan') ? 'text-[#4176CF]' : ''}}">Lowongan</a>
               </li>
+              @can ('Admin')
+              <li>
+                <a href="{{ url('/dashboard') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 {{ request()->is('dashboard') ? 'text-[#4176CF]' : ''}}">Dashboard</a>
+              </li>
+              @endcan
+              @if (auth()->check())
+                <li>
+                  <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="block py-2 px-3 text-white rounded hover:bg-gray-100 bg-red-500">Logout</button>
+                  </form>
+                </li>
+              @else
+                <li>
+                  <div>
+                    <a href="{{ route('login') }}" type="submit" class="block py-2 px-3 text-white rounded hover:bg-gray-100 bg-blue-500">Masuk</a>
+                  </div>
+                </li>
+              @endif
             </ul>
         </div>
     </nav>
 </header>
+<script>
+  // JavaScript
+  const profileButton = document.getElementById('profileButton');
+  const profileDropdown = document.getElementById('profileDropdown');
+
+  // Function to toggle dropdown visibility
+  function toggleDropdown() {
+    profileDropdown.classList.toggle('hidden');
+  }
+
+  // Event listener to show/hide dropdown on button click
+  profileButton.addEventListener('click', toggleDropdown);
+
+  // Close dropdown if clicked outside of it
+  window.addEventListener('click', function(event) {
+    if (!profileButton.contains(event.target)) {
+      profileDropdown.classList.add('hidden');
+    }
+  });
+</script>

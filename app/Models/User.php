@@ -53,5 +53,14 @@ class User extends Authenticatable
    }
 
 
+   public function pelatihans()
+    {
+        return $this->belongsToMany(Pelatihan::class, 'peserta', 'mahasiswa_id', 'pelatihan_id')->withTimestamps();
+    }
+
+    public function lamaran()
+    {
+        return $this->belongsToMany(lamaran::class, 'pelamar', 'mahasiswa_id', 'lamaran_id')->withTimestamps();
+    }
 
 }
