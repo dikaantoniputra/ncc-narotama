@@ -4,6 +4,14 @@
     Kategori Lowongan
 @endsection
 
+
+
+@push('after-style')
+<link href="{{ asset('') }}assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+@endpush
+
+
+
 @section('content')
 
 <div class="container-fluid">
@@ -38,7 +46,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table id="example2" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -77,31 +85,22 @@
 @endsection
 
 
-
 @push('after-script')
-
+    <script src="{{ asset('') }}assets/js/jquery.min.js"></script>
+	<script src="{{ asset('') }}assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="{{ asset('') }}assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="{{ asset('') }}assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<script src="{{ asset('') }}assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="{{ asset('') }}assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    // $(document).ready(function() {
-    //     $('#example').DataTable();
-    //   } );
-
-// lek onok datae
-$(document).ready(function() {
-    $('#example').DataTable({
-    processing: true,
-    serverSide: true,
-    ajax: {
-        url: '{{ route('kategorilowongans.index') }}',
-        
-    },
-    columns: [
-            {data: 'id', name: 'id'}, 
-            {data: 'kategori', name: 'kategori'},     
-            {data: 'action', name: 'action', orderable: false, searchable: false}
-        ] 
-    });
-});
-
+    $(document).ready(function() {
+        var table = $('#example2').DataTable( {
+            lengthChange: false,
+            buttons: [ 'copy', 'excel', 'pdf', 'print']
+        } );
+     
+        table.buttons().container()
+            .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+    } );
 </script>
-
 @endpush

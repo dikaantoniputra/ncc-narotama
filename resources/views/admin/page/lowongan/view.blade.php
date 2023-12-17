@@ -4,6 +4,11 @@
     Lowongan
 @endsection
 
+@push('after-style')
+<link href="{{ asset('') }}assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+@endpush
+
+
 @section('content')
     <div class="container-fluid">
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -34,7 +39,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -85,53 +90,21 @@
 
 
 @push('after-script')
-    <script>
-      
-
-
-        $(document).ready(function() {
-            $('#example').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: '{{ route('lowongans.index') }}',
-
-                },
-                columns: [{
-                        data: 'id',
-                        name: 'id'
-                    },
-                    {
-                        data: 'kategorilowongan.kategori',
-                        name: 'kategorilowongan.kategori'
-                    },
-                    {
-                        data: 'user.name',
-                        name: 'user.name'
-                    },
-                    {
-                        data: 'nama_perusahaan',
-                        name: 'nama_perusahaan'
-                    },
-                    {
-                        data: 'title_pekerjaan',
-                        name: 'title_pekerjaan'
-                    },
-                    {
-                        data: 'syarat_pekerjaan',
-                        name: 'syarat_pekerjaan'
-                    },
-                  
-                        {
-                            data: 'action',
-                            name: 'action',
-                            orderable: false,
-                            searchable: false
-                        }
-                 
-
-                ]
-            });
-        });
-    </script>
+    <script src="{{ asset('') }}assets/js/jquery.min.js"></script>
+	<script src="{{ asset('') }}assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="{{ asset('') }}assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="{{ asset('') }}assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<script src="{{ asset('') }}assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="{{ asset('') }}assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable( {
+            lengthChange: false,
+            buttons: [ 'copy', 'excel', 'pdf', 'print']
+        } );
+     
+        table.buttons().container()
+            .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+    } );
+</script>
 @endpush
