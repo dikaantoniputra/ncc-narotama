@@ -45,7 +45,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 /* Akun Mahasiswa */
-Route::resource('akun', MahasiswaController::class);
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
 Route::get('/dashboard', function () {
@@ -57,6 +57,13 @@ Route::put('/profile', [AdminController::class, 'profileupdate'])->name('profile
 
 Route::get('/profile/password', [AdminController::class, 'showPasswordForm'])->name('profile.password');
 Route::put('/profile/password', [AdminController::class, 'updatePassword'])->name('profile.updatePassword');
+
+Route::get('/admin',  [AdminController::class, 'index'])->name('admin.index');
+
+Route::resource('admin', AdminController::class);
+
+Route::resource('mahasiswa', MahasiswaController::class);
+
 
 Route::resource('beritas', BeritaController::class);
 Route::resource('kategoripelatihans', KategoriPelatihanController::class);

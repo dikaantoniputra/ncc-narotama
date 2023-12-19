@@ -23,28 +23,126 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        if ($request->ajax()) {
-            $model = 'user';
-            // $data = User::select('*');
-            return Datatables::of(Admin::select('*'))
-                // ->addIndexColumn()
-                ->addColumn('action', function ($object) use ($model) {
-                    $text = "";
-                    $text .= '<a href="' . route($model . '.show', [$model => $object]) . '" class="btn btn-sm btn-success"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                        <path d="M16 5l3 3"></path>
-                     </svg> Show</a>';
-                    $text .= "<form class='form-horizontal' style='display: inline;' method='POST' action='" . route($model . '.destroy', [$model => $object]) . "'><input type='hidden' name='_token' value='" . csrf_token() . "'> <input type='hidden' name='_method' value='DELETE'><button class='btn btn-sm btn-danger' type='submit'><i class='fas fa-trash'></i> Hapus</button></form><form>";
-                    return $text;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
+    {   
+        $user = User::where('role', 'admin')->get();
+        return view('admin.page.add_admin.index', compact('user'), ["title" => "Akun Mahasiswa"]);
+    }
 
-        return view('admin.page.user.view', ["title" => "Dashboard Admin"]);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.page.add_admin.create', ["title" => "Buat Akun Mahasiswa"]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'role' => 'required',
+            'status' => 'required',
+       ]);
+
+       $hashedPassword  = Hash::make($request->password);
+
+       //Simpan pengguna kedalam database
+       $user = User::create([
+            'username' => $request->username,
+            'password' => $hashedPassword,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'role' => $request->role,
+            'status' => $request->status,
+       ]);
+
+        Admin::create([
+            'user_id' => $user->id,
+       ]);
+
+       return redirect()->route('admin.index')->with('success', 'Data Berhasil Dibuat');
+
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @return \Illuminate\Http\Response
+     */
+    public function show($userId)
+    {   
+        $user = User::findOrFail($userId);
+        $mahasiswa = Admin::where('user_id', $userId)->first();
+
+        return view('admin.page.add_admin.show', compact('user', 'mahasiswa'), ["title" => "Lihat Akun Mahasiswa"]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($userId)
+    {
+        $user = User::findOrFail($userId);
+        $admin = Admin::where('user_id', $userId)->first(); // Mengambil data Mahasiswa yang terkait dengan User
+
+        return view('admin.page.add_admin.edit', compact('user', 'admin'), ["title" => "Edit Akun Mahasiswa"]);
+    }
+
+    public function update(Request $request, $userId)
+    {
+        // Validasi request
+
+        $user = User::findOrFail($userId);
+        $user->update([
+            'username' => $request->username,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'role' => $request->role,
+            'status' => $request->status,
+        ]);
+
+        $admin = Admin::where('user_id', $userId)->first();
+      
+
+        return redirect()->route('admin.index')->with('success', 'Data Berhasil Di Edit');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($userId)
+    {
+        $user = User::findOrFail($userId);
+
+        // Hapus data terkait dari tabel Mahasiswa sebelum menghapus User
+        $user->admin()->delete();
+
+        // Hapus User
+        $user->delete();
+
+        return redirect()->route('admin.index')->with('success', 'Data Berhasil Dihapus');
     }
 
     /**

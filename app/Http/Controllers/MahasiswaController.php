@@ -19,15 +19,7 @@ class MahasiswaController extends Controller
      */
     public function index(Request $request)
     {   
-        $user = User::all();
-
-        $keyword = $request->input('keyword');
-
-        $user = User::when($keyword, function($query) use ($keyword) {
-            $query->where('name', 'like', '%'.$keyword.'%')
-                ->orWhere('username', 'like', '%'.$keyword.'%');
-        })->paginate(10);
-
+        $user = User::where('role', 'mahasiswa')->get();
         return view('admin.page.account.index', compact('user'), ["title" => "Akun Mahasiswa"]);
     }
 
@@ -76,7 +68,7 @@ class MahasiswaController extends Controller
             'user_id' => $user->id,
        ]);
 
-       return redirect()->route('akun.index')->with('success', 'Data Berhasil Dibuat');
+       return redirect()->route('mahasiswa.index')->with('success', 'Data Berhasil Dibuat');
     }
 
     /**
@@ -126,7 +118,7 @@ class MahasiswaController extends Controller
             // Update data Mahasiswa jika diperlukan
         ]);
 
-        return redirect()->route('akun.index')->with('success', 'Data Berhasil Di Edit');
+        return redirect()->route('mahasiswa.index')->with('success', 'Data Berhasil Di Edit');
     }
 
     /**
@@ -145,6 +137,6 @@ class MahasiswaController extends Controller
         // Hapus User
         $user->delete();
 
-        return redirect()->route('akun.index')->with('success', 'Data Berhasil Dihapus');
+        return redirect()->route('mahasiswa.index')->with('success', 'Data Berhasil Dihapus');
     }
 }

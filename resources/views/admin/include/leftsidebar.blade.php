@@ -2,7 +2,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <img src="../assets/images/logo_ncc 1.png" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <p class="pt-3 text-blue-500">NAROTAMA CAREER CENTER</p>
@@ -30,9 +30,9 @@
                 <ul>
                     {{-- <li> <a href="{{ url('user') }}"><i class="bx bx-right-arrow-alt"></i>Data User</a>
                     </li> --}}
-                    <li> <a href="{{ url('siswa') }}"><i class="bx bx-right-arrow-alt"></i>Data Siswa</a>
+                    <li> <a href="{{ url('admin/mahasiswa') }}"><i class="bx bx-right-arrow-alt"></i>Data Siswa</a>
                     </li>
-                    <li> <a href="{{ url('tentor') }}"><i class="bx bx-right-arrow-alt"></i>Data Mentor</a>
+                    <li> <a href="{{ url('admin/admin') }}"><i class="bx bx-right-arrow-alt"></i>Data Admin</a>
                     </li>
 
                 </ul>
@@ -40,7 +40,7 @@
 
             <li class="menu-label">Master Berita</li>
             <li>
-                <a href="{{ url('admin/berita') }}">
+                <a href="{{ url('admin/beritas') }}">
                     <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
                     <div class="menu-title">Berita</div>

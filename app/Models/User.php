@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Admin;
+use App\Models\Mahasiswa;
+use App\Models\Pelatihan;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -50,6 +53,11 @@ class User extends Authenticatable
    public function mahasiswa()
    {
     return $this->hasOne(Mahasiswa::class);
+   }
+
+   public function admin()
+   {
+    return $this->hasOne(Admin::class);
    }
 
 

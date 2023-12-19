@@ -1,12 +1,16 @@
 @extends('admin.layout.master')
 
 @section('title')
-    Kategori Pelatihan
+    Admin
 @endsection
+
+
 
 @push('after-style')
 <link href="{{ asset('') }}assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endpush
+
+
 
 @section('content')
 
@@ -24,9 +28,10 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('kategoripelatihans.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
-                <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                </button>
+                    <a href="{{ route('admin.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+              
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
                     <a class="dropdown-item" href="javascript:;">Another action</a>
                     <a class="dropdown-item" href="javascript:;">Something else here</a>
@@ -46,30 +51,42 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kategori</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>phone</th>
+                            <th>Role</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($kategoriPelatihan as $item)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->kategori }}</td>
-                                <td class="flex gap-[10px]">
-                                    <a href="{{ route('kategoripelatihans.edit', $item->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>
-                                    <form action="{{ route('kategoripelatihans.destroy', $item->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-white px-[10px] py-[5px] bg-red-500 rounded-lg" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                        @forelse ($user as $admin)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $admin->name }}</td>
+                            <td>{{ $admin->email }}</td>
+                            <td>{{ $admin->phone }}</td>
+                            <td>{{ $admin->role }}</td>
+                            <td>{{ $admin->status }}</td>
+                            <td>
+                                
+                                <a href="{{ route('admin.show', $admin->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Lihat</a>
+                                <a href="{{ route('admin.edit', $admin->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>
+                                <form action="{{ route('admin.destroy', $admin->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-white px-[10px] py-[5px] bg-red-500 rounded-lg" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
                         @empty
                             <div>
                                 Data Kosong
                             </div>
                         @endforelse
+                        
                     </tbody>
+                   
                 </table>
             </div>
         </div>
@@ -79,7 +96,6 @@
 
 
 @endsection
-
 
 
 @push('after-script')

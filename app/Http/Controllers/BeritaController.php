@@ -17,28 +17,10 @@ class BeritaController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $model = 'berita';
-            // $data = User::select('*');
-            return Datatables::of(Berita::with('user'))
+        $vacancyData = Berita::all();
+        
 
-            ->addColumn('action', function ($object) use ($model) {
-                $text = "";
-                $text.= '<a href="'.route($model.'s.edit', [$model => $object]).'" class="btn btn-sm btn-success"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                <path d="M16 5l3 3"></path>
-             </svg> Edit</a>';
-                $text.= "<form class='form-horizontal' style='display: inline;' method='POST' action='".route($model.'s.destroy', [$model => $object])."'><input type='hidden' name='_token' value='".csrf_token()."'> <input type='hidden' name='_method' value='DELETE'><button class='btn btn-sm btn-danger' type='submit'><i class='fas fa-trash'></i> Hapus</button></form><form>";
-                return $text;
-            })
-            ->rawColumns(['action'])
-
-                ->make(true);
-        }
-
-        return view('admin.page.berita.view');
+        return view('admin.page.berita.view', compact('vacancyData'), ["title" => "Data Lowongan"]);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        Buat Akun Mahasiswa
+        Edit Akun Mahasiswa
     </div>
     
     @if ($errors->any())
@@ -18,8 +18,9 @@
         </div>
     @endif
 
-    <form action="{{ route('mahasiswa.store') }}" method="POST">
+    <form action="{{ route('admin.update', $user->id) }}" method="POST">
         @csrf
+        @method('PUT')
 
         <div class="row">
             <div class="col-xl-12 mx-auto">
@@ -38,31 +39,31 @@
         
                             <div class="row mb-3">
                                 <h4 class="mb-4">username</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama Perusahaan" name="username" value="{{ $mahasiswa->username ?? '' }}">
+                                <input type="text" class="form-control"  placeholder="Masukan Nama Perusahaan" name="username" value="{{ $user->username ?? '' }}">
                             </div>
         
                             <div class="row mb-3">
                                 <h4 class="mb-4">password</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="password" value="{{ $lowongan->password ?? '' }}">
+                                <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="password" value="{{ $user->password ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
                                 <h4 class="mb-4">name</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="name" value="{{ $lowongan->password ?? '' }}">
+                                <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="name" value="{{ $user->name ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
                                 <h4 class="mb-4">email</h4>
-                                <input type="email" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="email" value="{{ $lowongan->password ?? '' }}">
+                                <input type="email" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="email" value="{{ $user->email ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
                                 <h4 class="mb-4">telepon</h4>
-                                <input type="text" class="form-control" id="phone" placeholder="Masukan Nama Pekerjaan" name="phone"  value="{{ $lowongan->password ?? '' }}">
+                                <input type="text" class="form-control" id="phone" placeholder="Masukan Nama Pekerjaan" name="phone"  value="{{ $user->phone ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
-                                <input type="hidden" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="role" value="mahasiswa">
+                                <input type="hidden" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="role" value="admin">
                             </div>
 
                             <div class="row mb-3">
@@ -79,7 +80,7 @@
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-xl-12">
-                                    <button type="submit" class="btn btn-info px-5">Tambah Mahasiswa</button>
+                                    <button type="submit" class="btn btn-info px-5">Edit Admin</button>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +88,5 @@
                 </div>
             </div>
         </div>
-
-        
     </form> 
 @endsection
