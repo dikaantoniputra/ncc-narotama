@@ -243,8 +243,12 @@
                                 <div class="items-end">
                                     @if ($item->status === 'Dikirim')
                                         <div class="bg-[#4176CF] px-[12px] py-[4px] rounded-[20px] text-[12px] text-white font-bold">DIKIRIM</div>
-                                    @else
-                                    <div class="bg-[#198754] px-[12px] py-[4px] rounded-[20px] text-[12px] text-white font-bold">DITERIMA</div>
+                                    @elseif ($item->status === 'Dalam review')
+                                        <div class="bg-[#FFC107] px-[12px] py-[4px] rounded-[20px] text-[12px] text-white font-bold">DALAM REVIEW</div>
+                                    @elseif ($item->status === 'Dalam review')
+                                        <div class="bg-[#DC3545] px-[12px] py-[4px] rounded-[20px] text-[12px] text-white font-bold">TDK SESUAI</div>
+                                    @elseif ($item->status === 'Tidak sesuai')
+                                        <div class="bg-[#198754] px-[12px] py-[4px] rounded-[20px] text-[12px] text-white font-bold">DITERIMA</div>
                                     @endif
                                 </div>                         
                             </div>
