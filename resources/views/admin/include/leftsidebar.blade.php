@@ -30,9 +30,9 @@
                 <ul>
                     {{-- <li> <a href="{{ url('user') }}"><i class="bx bx-right-arrow-alt"></i>Data User</a>
                     </li> --}}
-                    <li> <a href="{{ url('siswa') }}"><i class="bx bx-right-arrow-alt"></i>Data Siswa</a>
+                    <li> <a href="{{ url('admin/mahasiswa') }}"><i class="bx bx-right-arrow-alt"></i>Data Siswa</a>
                     </li>
-                    <li> <a href="{{ url('tentor') }}"><i class="bx bx-right-arrow-alt"></i>Data Mentor</a>
+                    <li> <a href="{{ url('admin/admin') }}"><i class="bx bx-right-arrow-alt"></i>Data Admin</a>
                     </li>
 
                 </ul>

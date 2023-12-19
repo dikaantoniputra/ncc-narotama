@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        Buat Akun Mahasiswa
+        Buat Akun Admin
     </div>
     
     @if ($errors->any())
@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <form action="{{ route('mahasiswa.store') }}" method="POST">
+    <form action="{{ route('admin.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -31,7 +31,7 @@
                             <div class="card-title d-flex align-items-center">
                                 <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                                 </div>
-                                <h5 class="mb-0 text-info">Tambah Data Lowongan</h5>
+                                <h5 class="mb-0 text-info">Tambah Data Admin</h5>
                             </div>
                             <hr/>
         
@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <input type="hidden" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="role" value="mahasiswa">
+                                <input type="hidden" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="role" value="admin">
                             </div>
 
                             <div class="row mb-3">
@@ -79,7 +79,7 @@
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-xl-12">
-                                    <button type="submit" class="btn btn-info px-5">Tambah Mahasiswa</button>
+                                    <button type="submit" class="btn btn-info px-5">Tambah Admin</button>
                                 </div>
                             </div>
                         </div>

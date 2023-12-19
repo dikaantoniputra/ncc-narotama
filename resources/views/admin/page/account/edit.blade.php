@@ -18,53 +18,75 @@
         </div>
     @endif
 
-    <form action="{{ route('akun.update', $user->id) }}" method="POST">
+    <form action="{{ route('mahasiswa.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
 
-        <div>
-            <div>
-                username
-            </div>
-            <input type="text" name="username" id="username" value="{{$user->username}}">
-        </div>
-        <div>
-            <div>
-                password
-            </div>
-            <input type="text" name="password" id="password">
-        </div>
-        <div>
-            <div>
-                Nama
-            </div>
-            <input type="text" name="name" id="name" value="{{ $user->name }}">
-        </div>
-        <div>
-            <div>
-                Email
-            </div>
-            <input type="text" name="email" id="email" value="{{ $user->email }}">
-        </div>
-        <div>
-            <div>
-                Telepon
-            </div>
-            <input type="text" name="phone" id="phone" value="{{ $user->phone }}">
-        </div>
-        <div>
-            <div>
-                Role
-            </div>
-            <input type="text" name="role" id="role" value="{{ $user->role }}">
-        </div>
-        <div>
-            <div>
-                Status
-            </div>
-            <input type="text" name="status" id="status" value="{{ $user->status }}">
-        </div>
+        <div class="row">
+            <div class="col-xl-12 mx-auto">
+                <h6 class="mb-0 text-uppercase">Horizontal Form Materi</h6>
+                <hr/>
+                <div class="card border-top border-4 border-info">
+                    <div class="card-body">
+                        <div class="border p-4 rounded">
+                            <div class="card-title d-flex align-items-center">
+                                <div><i class="bx bxs-user me-1 font-22 text-info"></i>
+                                </div>
+                                <h5 class="mb-0 text-info">Tambah Data Lowongan</h5>
+                            </div>
+                            <hr/>
+        
+        
+                            <div class="row mb-3">
+                                <h4 class="mb-4">username</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Nama Perusahaan" name="username" value="{{ $user->username ?? '' }}">
+                            </div>
+        
+                            <div class="row mb-3">
+                                <h4 class="mb-4">password</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="password" value="{{ $user->password ?? '' }}">
+                            </div>
 
-        <button type="submit" class="text-white bg-blue-500 rounded-lg px-[10px] py-[5px]">Submit</button>
+                            <div class="row mb-3">
+                                <h4 class="mb-4">name</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="name" value="{{ $user->name ?? '' }}">
+                            </div>
+
+                            <div class="row mb-3">
+                                <h4 class="mb-4">email</h4>
+                                <input type="email" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="email" value="{{ $user->email ?? '' }}">
+                            </div>
+
+                            <div class="row mb-3">
+                                <h4 class="mb-4">telepon</h4>
+                                <input type="text" class="form-control" id="phone" placeholder="Masukan Nama Pekerjaan" name="phone"  value="{{ $user->phone ?? '' }}">
+                            </div>
+
+                            <div class="row mb-3">
+                                <input type="hidden" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="role" value="mahasiswa">
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select" id="role" name="status">
+                                            <option value="0">Aktiv</option>
+                                            <option value="1">Non Aktiv</option>
+                                    </select>
+                                </div>
+                            </div>
+                                                
+        
+                            <div class="row">
+                                <label class="col-sm-3 col-form-label"></label>
+                                <div class="col-xl-12">
+                                    <button type="submit" class="btn btn-info px-5">Edit Mahasiswa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form> 
 @endsection

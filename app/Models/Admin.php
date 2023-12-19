@@ -15,57 +15,14 @@ class Admin extends Model
      *
      * @var array
      */
-    protected $guarded = [];
-
+    public $table = 'admins';
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_id'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    // public function siswa()
-    // {
-    //     return $this->hasOne(Siswa::class);
-    // }
-
-    // public function tentor()
-    // {
-    //     return $this->hasOne(Tentor::class);
-    // }
-
-    // public function pelajaran()
-    // {
-    //     return $this->hasMany(Pelajaran::class);
-    // }
-
-    // public function jadwal()
-    // {
-    //     return $this->hasMany(Jadwal::class);
-    // }
-
-    // public function materi()
-    // {
-    //     return $this->hasMany(Materi::class);
-    // }
-
-    // public function transaksi()
-    // {
-    //     return $this->hasMany(Transaksi::class);
-    // }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }
