@@ -121,7 +121,7 @@
         {{-- Section - Lowongan Baru 2 --}}
         <section class=" bg-[#4176CF] lg:p-[80px] p-[40px]">
             <div>
-                <h1 class="lg:text-[36px] text-[30px] text-white font-semibold mb-[40px]">Lowongan Terbaru</h1>
+                <h1 class="lg:text-[36px] text-[30px] text-white font-semibold mb-[40px]">Lowongan</h1>
             </div>
             <div class="grid lg:grid-cols-2 grid-cols-1 gap-[28px]">
                 @forelse ($searchVacancy as $item)
@@ -241,7 +241,7 @@
                                     </div>
                                 </div>
                                 <div class="items-end">
-                                    @if ($item->status === 'Terkirim')
+                                    @if ($item->status === 'Dikirim')
                                         <div class="bg-[#4176CF] px-[12px] py-[4px] rounded-[20px] text-[12px] text-white font-bold">DIKIRIM</div>
                                     @else
                                     <div class="bg-[#198754] px-[12px] py-[4px] rounded-[20px] text-[12px] text-white font-bold">DITERIMA</div>

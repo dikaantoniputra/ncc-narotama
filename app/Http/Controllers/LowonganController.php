@@ -242,8 +242,15 @@ class LowonganController extends Controller
     {
         $detailVacancy = Lowongan::findOrFail($id);
 
+        $haveApplied = Lamaran::all();
+
+        $haveApplied = $haveApplied->sortBy(function ($item) {
+            return $item->status === 'Diterima' ? 0 : 1;
+        });
+
         return view('user.page.detailVacancy', compact('detailVacancy'), [
-            "title" => "Detail Lowongan"
+            "title" => "Detail Lowongan",
+            "haveApplied" => $haveApplied,
         ]);
     }
     

@@ -40,9 +40,15 @@
             </div>
         </div>
         <div>
+            @if (!$haveApplied)
             <button type="button" data-modal-target="vacancyForm" data-modal-toggle="vacancyForm" class="bg-[#4176CF] hover:bg-blue-600 text-white text-[16px] font-medium px-[32px] py-[16px] rounded-[10px]">
                 Kirim Lamaran
             </button>
+            @else
+            <button type="button" data-modal-target="vacancyForm" disabled data-modal-toggle="vacancyForm" class="bg-[#ABABAB] text-white text-[16px] font-medium px-[32px] py-[16px] rounded-[10px]">
+                Kirim Lamaran
+            </button>
+            @endif
         </div>
     </section>
     {{-- Flash Message --}}
