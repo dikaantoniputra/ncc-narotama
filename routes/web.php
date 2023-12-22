@@ -1,18 +1,26 @@
 <?php
 
+use App\Models\Admin;
+use App\Models\Berita;
+use App\Models\Lamaran;
+use App\Models\Peserta;
+use App\Models\Lowongan;
+use App\Models\Mahasiswa;
+use App\Models\Pelatihan;
+use App\Models\KategoriLowongan;
+use App\Models\KategoriPelatihan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\KategoriLowonganController;
 use App\Http\Controllers\KategoriPelatihanController;
-use App\Http\Controllers\LamaranController;
-use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\PesertaController;
-use App\Models\Pelatihan;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +56,20 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
+
 Route::get('/dashboard', function () {
-    return view('admin.page.index', ["title" => "Dashboard Admin"] );
+
+    $admin = Admin::count();
+    $mahasiswa = Mahasiswa::count();
+    $berita = Berita::count();
+    $kategorilowongan = KategoriLowongan::count();
+    $kategoripelatihan = KategoriPelatihan::count();
+    $lowongan = Lowongan::count();
+    $pelatihan = Pelatihan::count();
+    $lamaran = Lamaran::count();
+    $peserta = Peserta::count();
+
+    return view('admin.page.index', compact('admin','mahasiswa','berita','kategorilowongan','kategoripelatihan','lowongan','pelatihan','lamaran','peserta') );
 })->name('admin.dashboard');
 
 Route::get('/profile', [AdminController::class, 'profile']);

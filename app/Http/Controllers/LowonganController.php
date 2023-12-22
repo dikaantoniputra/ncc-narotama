@@ -108,9 +108,16 @@ class LowonganController extends Controller
      * @param  \App\Models\Lowongan  $lowongan
      * @return \Illuminate\Http\Response
      */
-    public function show(Lowongan $lowongan)
+    public function show($id)
     {
         //
+        $kategori = KategoriLowongan::all();
+        $lowongan = Lowongan::select('*')->findOrFail($id);
+        return view('admin.page.lowongan.show', [
+            'lowongan' => $lowongan,
+            'kategori' => $kategori
+        ]);
+       
     }
 
     /**
@@ -184,9 +191,15 @@ class LowonganController extends Controller
      * @param  \App\Models\Lowongan  $lowongan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lowongan $lowongan)
+    public function destroy($id)
     {
-        //
+        $Pelatihan = Lowongan::find($id);
+        if ($Pelatihan) {
+            $Pelatihan->delete();
+            return redirect()->back()->withInput()->with('success', 'Lowongan Berhasil Di Tambahkan.');
+        } else {
+            return redirect()->back()->withInput()->with('failed', 'Lowongan Gagal Di Hapus.');
+        }
     }
 
 

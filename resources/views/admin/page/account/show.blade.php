@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        Lihat Akun Mahasiswa
+        Show Akun Mahasiswa
     </div>
     
     @if ($errors->any())
@@ -17,40 +17,76 @@
             </ul>
         </div>
     @endif
-        <div>
-            <div>
-                username
+
+    <form action="{{ route('mahasiswa.update', $user->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <div class="row">
+            <div class="col-xl-12 mx-auto">
+                <h6 class="mb-0 text-uppercase"> Form Show Mahasisa</h6>
+                <hr/>
+                <div class="card border-top border-4 border-info">
+                    <div class="card-body">
+                        <div class="border p-4 rounded">
+                            <div class="card-title d-flex align-items-center">
+                                <div><i class="bx bxs-user me-1 font-22 text-info"></i>
+                                </div>
+                                <h5 class="mb-0 text-info">Edit Data Mahasiswa</h5>
+                            </div>
+                            <hr/>
+        
+        
+                            <div class="row mb-3">
+                                <h4 class="mb-4">UserName</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan UserName" name="username" value="{{ $user->username ?? '' }}" disabled>
+                            </div>
+        
+                            <div class="row mb-3">
+                                <h4 class="mb-4">Password</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Password" name="password" value="{{ $user->password ?? '' }}" disabled>
+                            </div>
+
+                            <div class="row mb-3">
+                                <h4 class="mb-4">Name</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Nama" name="name" value="{{ $user->name ?? '' }}" disabled>
+                            </div>
+
+                            <div class="row mb-3">
+                                <h4 class="mb-4">Email</h4>
+                                <input type="email" class="form-control"  placeholder="Masukan Email" name="email" value="{{ $user->email ?? '' }}" disabled>
+                            </div>
+
+                            <div class="row mb-3">
+                                <h4 class="mb-4">Telepon</h4>
+                                <input type="text" class="form-control" id="phone" placeholder="Masukan Telepon" name="phone"  value="{{ $user->phone ?? '' }}" disabled>
+                            </div>
+
+                            <div class="row mb-3">
+                                <input type="hidden" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="role" value="mahasiswa" disabled>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select" id="role" name="status" disabled>
+                                            <option value="0">Aktiv</option>
+                                            <option value="1">Non Aktiv</option>
+                                    </select>
+                                </div>
+                            </div>
+                                                
+        
+                            <div class="row">
+                                <label class="col-sm-3 col-form-label"></label>
+                                <div class="col-xl-12">
+                                    <a href="{{ url('admin/mahasiswa') }}" class="btn btn-info px-5">Kembali View Mahasiswa</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>{{ $user->username }}</div>
         </div>
-        <div>
-            <div>
-                Nama
-            </div>
-            <div>{{ $user->name }}</div>
-        </div>
-        <div>
-            <div>
-                Email
-            </div>
-            <div>{{ $user->email }}</div>
-        </div>
-        <div>
-            <div>
-                Telepon
-            </div>
-            <div>{{ $user->phone }}</div>
-        </div>
-        <div>
-            <div>
-                Role
-            </div>
-            <div>{{ $user->role }}</div>
-        </div>
-        <div>
-            <div>
-                Status
-            </div>
-            <div>{{ $user->status }}</div>
-        </div>
+    </form> 
 @endsection

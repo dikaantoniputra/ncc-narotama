@@ -37,28 +37,28 @@
         
         
                             <div class="row mb-3">
-                                <h4 class="mb-4">username</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama Perusahaan" name="username" value="{{ $mahasiswa->username ?? '' }}">
+                                <h4 class="mb-4">UserName</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan UserName" name="username" value="{{ $mahasiswa->username ?? '' }}">
                             </div>
         
                             <div class="row mb-3">
-                                <h4 class="mb-4">password</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="password" value="{{ $lowongan->password ?? '' }}">
+                                <h4 class="mb-4">Password</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Password" name="password" value="{{ $lowongan->password ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">name</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="name" value="{{ $lowongan->password ?? '' }}">
+                                <h4 class="mb-4">Name</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Name" name="name" value="{{ $lowongan->password ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">email</h4>
-                                <input type="email" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="email" value="{{ $lowongan->password ?? '' }}">
+                                <h4 class="mb-4">Email</h4>
+                                <input type="email" class="form-control"  placeholder="Masukan Email" name="email" value="{{ $lowongan->password ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">telepon</h4>
-                                <input type="text" class="form-control" id="phone" placeholder="Masukan Nama Pekerjaan" name="phone"  value="{{ $lowongan->password ?? '' }}">
+                                <h4 class="mb-4">Telepon</h4>
+                                <input type="text" class="form-control" id="phone" placeholder="Masukan Telepon" name="phone"  value="{{ $lowongan->password ?? '' }}">
                             </div>
 
                             <div class="row mb-3">

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xl-12 mx-auto">
-        <h6 class="mb-0 text-uppercase">Tambah Pelatihan</h6>
+        <h6 class="mb-0 text-uppercase">@yield('title')</h6>
         <hr/>
         <div class="card border-top border-4 border-info">
             <div class="card-body">
@@ -8,7 +8,7 @@
                     <div class="card-title d-flex align-items-center">
                         <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                         </div>
-                        <h5 class="mb-0 text-info">Pelatihan</h5>
+                        <h5 class="mb-0 text-info">@yield('title')</h5>
                     </div>
                     <hr/>
 
@@ -24,25 +24,25 @@
                     </div>
 
                     <div class="row mb-3">
-                        <h4 class="mb-4">nama_pelatihan</h4>
-                        <input type="text" class="form-control"  placeholder="Enter Your Pelatihan" name="nama_pelatihan" value="{{ $pelatihan->nama_pelatihan ?? '' }}">
+                        <h4 class="mb-4">Nama Pelatihan</h4>
+                        <input type="text" class="form-control"  placeholder="Enter Your Nama Pelatihan" name="nama_pelatihan" value="{{ $pelatihan->nama_pelatihan ?? '' }}">
                     </div>
 
                     <div class="row mb-3">
-                        <h4 class="mb-4">nama_penyelenggara</h4>
-                        <input type="text" class="form-control"  placeholder="Enter Your Pelatihan" name="nama_penyelenggara" value="{{ $pelatihan->nama_penyelenggara ?? '' }}">
+                        <h4 class="mb-4">Nama Penyelenggara</h4>
+                        <input type="text" class="form-control"  placeholder="Enter Your Nama Penyelenggara" name="nama_penyelenggara" value="{{ $pelatihan->nama_penyelenggara ?? '' }}">
                     </div>
 
                 
 
                     <div class="row mb-3">
-                    <h4 class="mb-4">deskripsi</h4>
+                    <h4 class="mb-4">Deskripsi</h4>
 							<textarea id="mytextarea" name="deskripsi">{{ $pelatihan->deskripsi ?? '' }}</textarea>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-xl-12 mx-auto">
-                            <h6 class="mb-0 text-uppercase">dokumentasi_pelatihan</h6>
+                            <h6 class="mb-0 text-uppercase">Dokumentasi Pelatihan</h6>
                             <hr/>
                             <div class="card">
                                 <div class="card-body">                      
@@ -54,7 +54,7 @@
 
                     <div class="row mb-3">
                         <div class="col-xl-12 mx-auto">
-                            <h6 class="mb-0 text-uppercase">poster</h6>
+                            <h6 class="mb-0 text-uppercase">Poster</h6>
                             <hr/>
                             <div class="card">
                                 <div class="card-body">                      
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <h4 class="mb-4">max_peserta</h4>
+                        <h4 class="mb-4">Max Peserta</h4>
                         <input type="number" class="form-control"  placeholder="Masukan Kuota Peserta" name="max_peserta" value="{{ $pelatihan->max_peserta ?? '' }}">
                     </div>
 
@@ -90,7 +90,7 @@
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
                         <div class="col-xl-12">
-                            <button type="submit" class="btn btn-info px-5 text-white">Tambah Pelatihan</button>
+                            <button type="submit" class="btn btn-info px-5 text-white">Submit @yield('title')</button>
                         </div>
                     </div>
                 </div>

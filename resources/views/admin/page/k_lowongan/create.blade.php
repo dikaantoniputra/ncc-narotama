@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-k lowongan
+Kategori Lowongan
 @endsection
 
 @push('after-style')
@@ -15,7 +15,7 @@ k lowongan
             <div class="card-body">
                 <form method="POST" action="{{ route('kategorilowongans.store') }}" id="form">
                     @csrf
-                    @include('admin.page.k_pelatihan.form')
+                    @include('admin.page.k_lowongan.form')
                 </form>
             </div>
         </div>

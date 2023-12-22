@@ -9,8 +9,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Pelajaran</p>
-                            <h4 class="mb-0 text-primary">{{ $pelajaran ?? '' }}</h4>
+                            <p class="mb-0">Total Admin</p>
+                            <h4 class="mb-0 text-primary">{{ $admin ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-wallet font-35 text-primary"></i>
                             {{-- bx bx-cart --}}
@@ -26,8 +26,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Siswa</p>
-                            <h4 class="mb-0 text-danger">{{ $siswa ?? '' }}</h4>
+                            <p class="mb-0">Total Mahasiswa</p>
+                            <h4 class="mb-0 text-danger">{{ $mahasiswa ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-group font-35 text-danger"></i>
                         </div>
@@ -41,8 +41,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Tentor</p>
-                            <h4 class="mb-0 text-success">{{ $tentor ?? '' }}</h4>
+                            <p class="mb-0">Total Berita</p>
+                            <h4 class="mb-0 text-success">{{ $berita ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-group font-35 text-success"></i>
                         </div>
@@ -56,8 +56,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Jadwal</p>
-                            <h4 class="mb-0 text-warning">{{ $jadwal ?? '' }}</h4>
+                            <p class="mb-0">Total K-Pelatihan</p>
+                            <h4 class="mb-0 text-warning">{{ $kategoripelatihan ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
                         </div>
@@ -73,8 +73,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Kelase</p>
-                            <h4 class="mb-0 text-warning">{{ $kelase ?? '' }}</h4>
+                            <p class="mb-0">Total K-Lowongan</p>
+                            <h4 class="mb-0 text-warning">{{ $kategorilowongan ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
                         </div>
@@ -89,8 +89,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Transaksi</p>
-                            <h4 class="mb-0 text-warning">{{ $transaksi ?? '' }}</h4>
+                            <p class="mb-0">Total Lowongan</p>
+                            <h4 class="mb-0 text-warning">{{ $lowongan ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
                         </div>
@@ -106,8 +106,42 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Pendapatan</p>
-                            <h4 class="mb-0 text-warning">{{ $totalJumlah ?? '' }}</h4>
+                            <p class="mb-0">Total Pelatihan</p>
+                            <h4 class="mb-0 text-warning">{{ $pelatihan ?? '' }}</h4>
+                        </div>
+                        <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="progress radius-10 my-2" style="height:4px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 65%"></div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="col pt-2">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="mb-0">Total Lamaran</p>
+                            <h4 class="mb-0 text-warning">{{ $lamaran ?? '' }}</h4>
+                        </div>
+                        <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="progress radius-10 my-2" style="height:4px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 65%"></div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="col pt-2">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="mb-0">Total Peserta Pelatihan</p>
+                            <h4 class="mb-0 text-warning">{{ $peserta ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
                         </div>

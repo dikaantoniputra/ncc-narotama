@@ -26,7 +26,7 @@ Edit Lowongan Pekerjaan
                                     <div class="row mb-3">
                                         <label for="inputEnterYourName" class="col-sm-3 col-form-label">Kategori Lowongan</label>
                                         <div class="col-sm-9">
-                                            <select class="form-select" id="role" name="kategori_lowongan_id">
+                                            <select class="form-select" id="role" name="kategori_lowongan_id" disabled>
                                                 @foreach($kategori as $r)
                                                     <option value="{{ $r->id }}">{{ $r->kategori }}</option>
                                                 @endforeach
@@ -36,45 +36,46 @@ Edit Lowongan Pekerjaan
                 
                                     <div class="row mb-3">
                                         <h4 class="mb-4">Nama Perusahaan</h4>
-                                        <input type="text" class="form-control"  placeholder="Masukan Nama Perusahaan" name="nama_perusahaan" value="{{ $lowongan->nama_perusahaan ?? '' }}">
+                                        <input type="text" class="form-control"  placeholder="Masukan Nama Perusahaan" name="nama_perusahaan" value="{{ $lowongan->nama_perusahaan ?? '' }}" disabled>
                                     </div>
                 
                                     <div class="row mb-3">
                                         <h4 class="mb-4">Nama Pekerjaan</h4>
-                                        <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="title_pekerjaan" value="{{ $lowongan->title_pekerjaan ?? '' }}">
+                                        <input type="text" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="title_pekerjaan" value="{{ $lowongan->title_pekerjaan ?? '' }}" disabled>
                                     </div>
                 
                                 
                 
                                     <div class="row mb-3">
                                     <h4 class="mb-4">Deskripsi Pekerjaan</h4>
-                                            <textarea id="mytextarea" name="deskripsi_pekerjaan">{{ $lowongan->deskripsi_pekerjaan ?? '' }}</textarea>
+                                            <textarea id="mytextarea" name="deskripsi_pekerjaan" disabled>{{ $lowongan->deskripsi_pekerjaan ?? '' }}</textarea>
                                     </div>
                 
                                     <div class="row mb-3">
                                         <h4 class="mb-4">Syarat Pekerjaan</h4>
-                                        <input type="text" class="form-control"  placeholder="Masukan Syarat Pekerjaan" name="syarat_pekerjaan" value="{{ $lowongan->syarat_pekerjaan ?? '' }}">
+                                        <input type="text" class="form-control"  placeholder="Masukan Syarat Pekerjaan" name="syarat_pekerjaan" value="{{ $lowongan->syarat_pekerjaan ?? '' }}" disabled>
                                     </div>
                 
                                     <div class="row mb-3">
                                         <h4 class="mb-4">Kompetensi Pekerjaan</h4>
-                                        <input type="text" class="form-control"  placeholder="Masukan Kompetensi pekerjaan" name="kompetensi_pekerjaan" value="{{ $lowongan->kompetensi_pekerjaan ?? '' }}">
+                                        <input type="text" class="form-control"  placeholder="Masukan Kompetensi pekerjaan" name="kompetensi_pekerjaan" value="{{ $lowongan->kompetensi_pekerjaan ?? '' }}" disabled>
                                     </div>
                 
                                     <div class="row mb-3">
                                         <h4 class="mb-4">Kota Pekerjaan</h4>
-                                        <input type="text" class="form-control"  placeholder="Masukan Kota pekerjaan" name="kota" value="{{ $lowongan->kota ?? '' }}">
+                                        <input type="text" class="form-control"  placeholder="Masukan Kota pekerjaan" name="kota" value="{{ $lowongan->kota ?? '' }}" disabled>
                                     </div>
                 
                                     <div class="row mb-3">
                                         <div class="col-xl-12 mx-auto">
                                             <h6 class="mb-0 text-uppercase">Logo</h6>
                                             <hr/>
-                                            <div class="card">
-                                                <div class="card-body">                      
-                                                        <input  type="file" name="logo" >
-                                                </div>
-                                            </div>
+                                                @if($lowongan->logo ?? '')
+                                                <img src="{{ asset('') }}uploads/{{ $lowongan->logo }}" alt="blog image">
+                                                @else
+                                                    {{-- <img src="https://placehold.co/250x250" class="img-fluid" alt=""> --}}
+                                                @endif
+                                            
                                         </div>
                                     </div>
                 
@@ -83,7 +84,7 @@ Edit Lowongan Pekerjaan
                                     <div class="row">
                                         <label class="col-sm-3 col-form-label"></label>
                                         <div class="col-xl-12">
-                                            <button type="submit" class="btn btn-info px-5">@yield('title') </button>
+                                            <a href="{{ url('admin/lowongans') }}" class="btn btn-info px-5">Kembali Lowongan View</a>
                                         </div>
                                     </div>
                                 </div>

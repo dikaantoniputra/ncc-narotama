@@ -12,15 +12,15 @@
                     </div>
                     <hr/>
                     <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">kategori</label>
+                        <label for="inputEnterYourName" class="col-sm-3 col-form-label">Kategori</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Enter Your kategori" name="kategori" value="{{ $kategoripelatihans->kategori ?? '' }}">
+                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Enter Your Kategori Lowonongan" name="kategori" value="{{ $kategoripelatihans->kategori ?? '' }}">
                         </div>
                     </div>
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
                         <div class="col-sm-9">
-                            <button type="submit" class="btn btn-info px-5">Simpan</button>
+                            <button type="submit" class="btn btn-info px-5">Simpan @yield('title')</button>
                         </div>
                     </div>
                 </div>

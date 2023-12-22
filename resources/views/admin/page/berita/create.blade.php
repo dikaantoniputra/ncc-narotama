@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Pelajaran
+Berita
 @endsection
 
 @push('after-style')

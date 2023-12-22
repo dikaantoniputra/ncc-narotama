@@ -2,7 +2,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="../assets/images/logo_ncc 1.png" class="logo-icon" alt="logo icon">
+            <img src="{{ asset('') }}assets/images/logo_ncc 1.png" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <p class="pt-3 text-blue-500">NAROTAMA CAREER CENTER</p>
@@ -14,7 +14,7 @@
  
         <ul class="metismenu" id="menu">
             <li>
-                <a href="{{ url('/admin') }}">
+                <a href="{{ url('/admin/dashboard') }}">
                     <div class="parent-icon"><i class='bx bx-home-circle'></i>
                     </div>
                     <div class="menu-title">Dashboard</div>

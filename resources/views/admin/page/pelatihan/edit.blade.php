@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Edit Pelajaran
+Edit Pelatihan
 @endsection
 
 @section('content')

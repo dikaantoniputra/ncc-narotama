@@ -197,9 +197,15 @@ class PelatihanController extends Controller
      * @param  \App\Models\Pelatihan  $pelatihan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pelatihan $pelatihan)
+    public function show($id)
     {
-        //
+        $kategori = KategoriPelatihan::all();
+        $pelatihan = Pelatihan::select('*')->findOrFail($id);
+        return view('admin.page.pelatihan.show', [
+            'pelatihan' => $pelatihan,
+            'kategori' => $kategori
+        ]);
+       
     }
 
     /**
