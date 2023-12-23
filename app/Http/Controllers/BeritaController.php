@@ -162,4 +162,46 @@ class BeritaController extends Controller
             return redirect()->back()->withInput()->with('success', 'Kegiatan Berhasil Di Tambahkan.');
         }
     }
+
+
+    public function news(Request $request)
+    {
+        $latestNews = Berita::latest()->take(4)->get();
+
+        // Memanipulasi deskripsi sebelum mengirim data ke view
+        $latestNews->transform(function ($item) {
+            $item->isi = Str::words($item->isi, 15, ' .....'); // Batasi deskripsi menjadi 15 kata
+            return $item;
+        });
+
+        $keywordPositionName = $request->input('judul');
+       
+        $searchVacancy = Berita::when($keywordPositionName, function($query) use ($keywordPositionName) {
+            $query->where('judul', 'like', '%'.$keywordPositionName.'%');
+        })
+
+        ->paginate(6);
+        
+        $searchVacancy->transform(function ($item) {
+            $item->isi = Str::words($item->isi, 15, ' .....'); // Batasi deskripsi menjadi 15 kata
+            return $item;
+        });
+
+        
+        return view('user.page.news', compact('latestNews', 'searchVacancy'), [
+            "title" => "Berita"
+        ]);
+    }
+
+    public function detailNews($id)
+    {   
+        $detailNews = Berita::findOrFail($id);
+
+       
+
+        return view('user.page.detailNews', compact('detailNews'), [
+            "title" => "Detail Pelatihan",
+        ]);
+    }
+
 }

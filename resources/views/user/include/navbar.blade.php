@@ -5,7 +5,7 @@
     {{-- Dekstop Navbar --}}
     <nav class="flex py-[28px] px-[80px] justify-between max-sm:hidden max-md:hidden border-b-[#C7C7C7] border-[0.5px]">
         <div id="logo" class="">
-            <img src="../assets/images/logo_ncc 1.png" alt="">
+            <img src="{{ asset('') }}../assets/images/logo_ncc 1.png" alt="">
         </div>
         <ul class="flex gap-[60px] my-auto font-bold text-[#444]  ">
             <a href="{{ url('/') }}" class="hover:text-[#4176CF] {{ request()->is('/') ? 'text-[#4176CF]' : ''}}">Home</a>

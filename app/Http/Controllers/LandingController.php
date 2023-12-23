@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\KategoriPelatihan;
 use App\Models\Lowongan;
 use App\Models\Pelatihan;
@@ -14,6 +15,15 @@ class LandingController extends Controller
 {
     public function home() 
     {   
+
+        $latestArtikel = Berita::latest()->take(3)->get();
+
+        // Memanipulasi deskripsi sebelum mengirim data ke view
+        $latestArtikel->transform(function ($item) {
+            $item->deskripsi = Str::words($item->deskripsi, 15, ' .....'); // Batasi deskripsi menjadi 15 kata
+            return $item;
+        });
+
         $latestCourse = Pelatihan::latest()->take(3)->get();
 
         // Memanipulasi deskripsi sebelum mengirim data ke view
@@ -29,22 +39,22 @@ class LandingController extends Controller
             return $item;
         });
 
-        return view('user.page.home',compact('latestCourse', 'latestVacancy'), [
+        return view('user.page.home',compact('latestCourse', 'latestVacancy','latestArtikel'), [
             "title" => "Beranda"
         ]);
     }
 
-    public function news()
-    {
-        return view('user.page.news', [
-            "title" => "Berita"
-        ]);
-    }
+    // public function news()
+    // {
+    //     return view('user.page.news', [
+    //         "title" => "Berita"
+    //     ]);
+    // }
 
-    public function detailNews()
-    {
-        return view('user.page.detailNews', [
-            "title" => "Detail Berita"
-        ]);
-    }
+    // public function detailNews()
+    // {
+    //     return view('user.page.detailNews', [
+    //         "title" => "Detail Berita"
+    //     ]);
+    // }
 }

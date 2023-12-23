@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Mahasiswa;
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Mahasiswa;
 use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class AdminTableSeeder extends Seeder
@@ -27,8 +28,13 @@ class AdminTableSeeder extends Seeder
             'status' => '0',
         ]);
 
-        $mahasiswa = Mahasiswa::create([
+         Admin::create([
             'user_id' => $user->id,
         ]);
+
+        Mahasiswa::create([
+            'user_id' => $user->id,
+        ]);
+
     }
 }

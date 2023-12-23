@@ -77,46 +77,24 @@
         <h1 class="text-[36px] text-black font-semibold text-center mb-[60px]">Artikel <span class="text-[#4176CF]">Berita</span></h1>
         {{-- Card Berita --}}
         <div class="grid lg:grid-cols-3 grid-cols-1 gap-[28px]">
-            <div class="h-full bg-white rounded-[8px]">
-                <img src="assets/images/homepage-images/cards-image/news/card1.png" alt="card1" class="rounded-tl-[8px] rounded-tr-[8px]">
-                <div class="p-[20px]">
-                    <div class="text-[12px] font-medium text-[#808080]">Product CON 2023</div>
-                    <div class="my-[8px] text-[#444] text-[20px] font-semibold">Narotama Job Fair 2023</div>
-                    <div class="text-[#606060] text-[16px] font-medium text-justify">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adi piscing elit, 
-                        sed eiusmod tempor incididunt ...
+            @forelse ($latestArtikel as $item)
+                <div class="h-full bg-white rounded-[8px]">
+                    <img src="{{ asset('uploads/' . $item->cover) }}" alt="card1" class="rounded-tl-[8px] rounded-tr-[8px]">
+                    <div class="p-[20px]">
+                        <div class="text-[12px] font-medium text-[#808080]">{{ $item->created_at }}</div>
+                        <div class="my-[8px] text-[#444] text-[20px] font-semibold">{{ $item->judul }}</div>
+                        <div class="text-[#606060] text-[16px] font-medium text-justify">
+                            {{ strip_tags($item->isi) }}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="h-full bg-white rounded-[8px]">
-                <img src="assets/images/homepage-images/cards-image/news/card2.png" alt="card2" class="rounded-tl-[8px] rounded-tr-[8px]">
-                <div class="p-[20px]">
-                    <div class="text-[12px] font-medium text-[#808080]">Penyelenggaran Pelatihan UX Res ...</div>
-                    <div class="my-[8px] text-[#444] text-[20px] font-semibold">Narotama Job Fair 2023</div>
-                    <div class="text-[#606060] text-[16px] font-medium text-justify">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adi piscing elit, 
-                        sed eiusmod tempor incididunt ...
-                    </div>
-                </div>
-            </div>
-            <div class="h-full bg-white rounded-[8px]">
-                <img src="assets/images/homepage-images/cards-image/news/card3.png" alt="card3" class="rounded-tl-[8px] rounded-tr-[8px]">
-                <div class="p-[20px]">
-                    <div class="text-[12px] font-medium text-[#808080]">20 Agustus 2023</div>
-                    <div class="my-[8px] text-[#444] text-[20px] font-semibold">Narotama Job Fair 2023</div>
-                    <div class="text-[#606060] text-[16px] font-medium text-justify">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adi piscing elit, 
-                        sed eiusmod tempor incididunt ...
-                    </div>
-                </div>
-            </div>
+            @empty
+             <div>Mohon maaf, pelatihan saat ini belum tersedia</div>
+            @endforelse
         </div>
         {{-- Tombol Selengkapnya --}}
         <div class="flex mx-auto">
-            <a href="#" class="bg-[#4176CF] hover:bg-blue-600 text-white mt-[40px] px-[32px] py-[16px] font-medium text-[16px] rounded-[10px] mx-auto">Lihat Semua Berita</a>
+            <a href="{{ route('user.page.news') }}" class="bg-[#4176CF] hover:bg-blue-600 text-white mt-[40px] px-[32px] py-[16px] font-medium text-[16px] rounded-[10px] mx-auto">Lihat Semua Berita</a>
         </div>
     </section>
     {{-- Section - Pelatihan --}}

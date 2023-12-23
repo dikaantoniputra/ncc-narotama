@@ -34,8 +34,8 @@ use App\Http\Controllers\KategoriPelatihanController;
 */
 
 Route::get('/', [LandingController::class, 'home'])->name('user.page.home'); 
-Route::get('/berita', [LandingController::class, 'news'])->name('user.page.news'); 
-Route::get('/berita/detail', [LandingController::class, 'detailNews'])->name('user.page.detailNews');
+Route::get('/berita', [BeritaController::class, 'news'])->name('user.page.news'); 
+Route::get('/berita/detail/{id}', [BeritaController::class, 'detailNews'])->name('user.page.detailNews');
 
 /* Pelatihan */
 Route::get('/pelatihan', [PelatihanController::class, 'course'])->name('user.page.course'); 
