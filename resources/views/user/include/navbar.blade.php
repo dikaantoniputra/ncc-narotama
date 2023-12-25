@@ -21,7 +21,7 @@
           <!-- Dropdown Content -->
           <div id="profileDropdown" class="absolute right-[10px] top-20 mt-2 w-40 bg-white rounded-md shadow-lg origin-top-right ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-              <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="dashboard">Dashboard</a>
+            
               <form action="/logout" method="POST">
                 @csrf
                 <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="logout">Logout</button>

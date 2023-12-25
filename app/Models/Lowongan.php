@@ -27,4 +27,17 @@ class Lowongan extends Model
 
     }
 
+    public function lamaran()
+    {
+        return $this->hasMany(Lamaran::class);
+    }
+
+
+
+    public function mahasiswa()
+    {
+        return $this->hasMany(Mahasiswa::class);
+    }
+
+
 }

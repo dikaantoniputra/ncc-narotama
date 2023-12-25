@@ -20,7 +20,7 @@ class CreatePelatihansTable extends Migration
             $table->string('nama_pelatihan');
             $table->string('nama_penyelenggara');
             $table->text('deskripsi');
-            $table->string('dokumentasi_pelatihan');
+            $table->string('dokumentasi_pelatihan')->nullable();
             $table->string('poster');
             $table->integer('max_peserta');
             $table->integer('status')->default(0); // Ganti tipe data menjadi enum

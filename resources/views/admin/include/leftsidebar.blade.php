@@ -79,6 +79,22 @@
                 </a>
             </li>
 
+            <li class="menu-label">Master Pendaftaran</li>
+            <li>
+                <a href="{{ url('admin/peserta') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    </div>
+                    <div class="menu-title">Peserta</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('admin/lamaran') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    </div>
+                    <div class="menu-title">Lamaran</div>
+                </a>
+            </li>
+
 
             
 

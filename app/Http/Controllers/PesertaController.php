@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peserta;
+use App\Models\Pelatihan;
 use Illuminate\Http\Request;
+use App\Models\KategoriPelatihan;
+use App\Http\Controllers\Controller;
 
 class PesertaController extends Controller
 {
@@ -12,10 +15,14 @@ class PesertaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $dataPelatihan = Pelatihan::all();
+        $peserta = Peserta::all();
+        return view('admin.page.peserta.view',compact('dataPelatihan'), ["title" => "Data Pelatihan"]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -33,9 +40,15 @@ class PesertaController extends Controller
      * @param  \App\Models\Peserta  $peserta
      * @return \Illuminate\Http\Response
      */
-    public function show(Peserta $peserta)
+    public function show($id)
     {
-        //
+        $kategori = KategoriPelatihan::all();
+        $pelatihan = Pelatihan::select('*')->findOrFail($id);
+        return view('admin.page.peserta.show', [
+            'pelatihan' => $pelatihan,
+            'kategori' => $kategori
+        ]);
+       
     }
 
     /**

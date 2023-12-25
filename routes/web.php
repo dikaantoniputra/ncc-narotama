@@ -45,7 +45,7 @@ Route::post('/pelatihan/daftar', [PelatihanController::class, 'registerCourse'])
 
 Route::get('/lowongan', [LowonganController::class, 'vacancy'])->name('user.page.vacancy'); 
 Route::get('/lowongan/detail/{id}', [LowonganController::class, 'detailVacancy'])->name('user.page.detailVacancy');
-Route::post('/lowongan/detail/daftar', [LamaranController::class, 'storeApplication'])->name('user.storeApplication');
+Route::post('/lowongan/detail/daftar', [LowonganController::class, 'storeApplication'])->name('user.storeApplication');
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
@@ -79,18 +79,19 @@ Route::get('/profile/password', [AdminController::class, 'showPasswordForm'])->n
 Route::put('/profile/password', [AdminController::class, 'updatePassword'])->name('profile.updatePassword');
 
 Route::get('/admin',  [AdminController::class, 'index'])->name('admin.index');
-
 Route::resource('admin', AdminController::class);
 
 Route::resource('mahasiswa', MahasiswaController::class);
-
-
 Route::resource('beritas', BeritaController::class);
 Route::resource('kategoripelatihans', KategoriPelatihanController::class);
 Route::resource('pelatihans', PelatihanController::class);
-
 Route::resource('kategorilowongans', KategoriLowonganController::class);
 Route::resource('lowongans', LowonganController::class);
+
+Route::resource('lamaran', LamaranController::class);
+Route::resource('peserta', PesertaController::class);
+Route::get('/download/documents/{id}', [LamaranController::class, 'downloadDocuments'])->name('download.documents');
+
 
 });
 

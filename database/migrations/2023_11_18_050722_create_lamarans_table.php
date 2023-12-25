@@ -17,10 +17,10 @@ class CreateLamaransTable extends Migration
             $table->id();
             $table->unsignedBigInteger('lowongan_id');
             $table->unsignedBigInteger('mahasiswa_id');
-            $table->string('dokumen_riwayat');
-            $table->string('dokumen_lamaran');
-            $table->string('dokumen_transkrip');
-            $table->string('dokumen_tambahan');
+            $table->string('dokumen_riwayat')->nullable();
+            $table->string('dokumen_lamaran')->nullable();
+            $table->string('dokumen_transkrip')->nullable();
+            $table->string('dokumen_tambahan')->nullable();
             $table->string('status');
             $table->foreign('lowongan_id')->references('id')->on('lowongans')->onDelete('cascade');
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswas')->onDelete('cascade');
