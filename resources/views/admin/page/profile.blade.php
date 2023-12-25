@@ -29,7 +29,7 @@
                                         <h4>John Doe</h4>
                                         <p class="text-secondary mb-1">Full Stack Developer</p>
                                         <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                        <a class="btn btn-primary" href="{{ url('admin/password') }}">Reset Password</a>
+                                        <a class="btn btn-primary" href="{{ url('admin/profile/password') }}">Reset Password</a>
                                         <button class="btn btn-outline-danger">Logout</button>
                                     </div>
                                 </div>

@@ -24,10 +24,10 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="javascript:;"><i
+                    <li><a class="dropdown-item" href="{{ url('/admin/profile') }}"><i
                                 class="bx bx-user"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item" href="javascript:;"><i
+                    <li><a class="dropdown-item" href="{{ url('/admin/dashboard') }}"><i
                                 class="bx bx-user"></i><span>Dashborard</span></a>
                     </li>
                     <form action="/logout" method="POST">
