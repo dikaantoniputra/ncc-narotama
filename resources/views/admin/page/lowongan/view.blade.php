@@ -45,11 +45,9 @@
                                 <th>Id</th>
                                 <th>Kategori</th>
                                 <th>User</th>
-                                <th>Judul</th>
+                                <th>Nama Pekerjaan</th>
                                 <th>Nama Perusahaan</th>
-                                {{-- <th>Kompetensi Pekerjaan</th>
-                                <th>Syarat Pekerjaan</th>
-                                <th>Kota</th> --}}
+                       
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -61,9 +59,7 @@
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->title_pekerjaan }}</td>
                                     <td>{{ $item->nama_perusahaan }}</td>
-                                    {{-- <td>{{ $item->kompetensi_pekerjaan }}</td>
-                                    <td>{{ $item->syarat_pekerjaan }}</td>
-                                    <td>{{ $item->kota }}</td> --}}
+                                   
                                     <td class="flex gap-[10px]">
                                         <a href="{{ route('lowongans.show', $item->id) }}" class="text-white px-[10px] py-[5px] bg-green-500 rounded-lg">Lihat</a>
                                         <a href="{{ route('lowongans.edit', $item->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>

@@ -29,14 +29,7 @@
         <div class="ms-auto">
             <div class="btn-group">
                     <a href="{{ route('admin.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
-                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-              
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                    <a class="dropdown-item" href="javascript:;">Another action</a>
-                    <a class="dropdown-item" href="javascript:;">Something else here</a>
-                    <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-                </div>
+                   
             </div>
         </div>
     </div>
@@ -53,7 +46,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>phone</th>
+                            <th>No. Telepon</th>
                             <th>Role</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -67,7 +60,15 @@
                             <td>{{ $admin->email }}</td>
                             <td>{{ $admin->phone }}</td>
                             <td>{{ $admin->role }}</td>
-                            <td>{{ $admin->status }}</td>
+                            <td>
+                                @if($admin->status == 0)
+                                    Aktif
+                                @elseif($admin->status == 1)
+                                    Non Aktif
+                                @else
+                                    
+                                @endif
+                            </td>
                             <td>
                                 
                                 <a href="{{ route('admin.show', $admin->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Lihat</a>

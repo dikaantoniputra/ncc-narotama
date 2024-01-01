@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Tambah Pelatihan
+FORM PELATIHAN
 @endsection
 
 @push('after-style')

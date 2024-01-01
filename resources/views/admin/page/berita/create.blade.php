@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Berita
+Tulis
 @endsection
 
 @push('after-style')

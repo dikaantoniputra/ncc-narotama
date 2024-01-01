@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Show Pelatihan
+Lihat Pelatihan
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Show Pelatihan
             <div class="card-body">
                 <div class="row">
                     <div class="col-xl-12 mx-auto">
-                        <h6 class="mb-0 text-uppercase">@yield('title')</h6>
+                        <h6 class="mb-0 text-uppercase">Form Pelatihan</h6>
                         <hr/>
                         <div class="card border-top border-4 border-info">
                             <div class="card-body">
@@ -105,7 +105,7 @@ Show Pelatihan
                                     <div class="row">
                                         <label class="col-sm-3 col-form-label"></label>
                                         <div class="col-xl-12">
-                                            <a href="{{ url('admin/pelatihans') }}" class="btn btn-info px-5 text-white">Kembali @yield('title')</a>
+                                            <a href="{{ url('admin/pelatihans') }}" class="btn btn-info px-5 text-white">Kembali </a>
                                         </div>
                                     </div>
                                 </div>

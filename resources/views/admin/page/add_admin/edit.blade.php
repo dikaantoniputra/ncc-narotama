@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        Edit Akun Admin
+        FORM ADMIN
     </div>
     
     @if ($errors->any())
@@ -24,7 +24,7 @@
 
         <div class="row">
             <div class="col-xl-12 mx-auto">
-                <h6 class="mb-0 text-uppercase">Form Edit Admin</h6>
+                <h6 class="mb-0 text-uppercase">Form  Admin</h6>
                 <hr/>
                 <div class="card border-top border-4 border-info">
                     <div class="card-body">
@@ -32,7 +32,7 @@
                             <div class="card-title d-flex align-items-center">
                                 <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                                 </div>
-                                <h5 class="mb-0 text-info">edit Data Admin</h5>
+                                <h5 class="mb-0 text-info">Edit Data </h5>
                             </div>
                             <hr/>
         
@@ -69,9 +69,9 @@
                             <div class="row mb-3">
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
-                                    <select class="form-select" id="role" name="status">
-                                            <option value="0">Aktiv</option>
-                                            <option value="1">Non Aktiv</option>
+                                    <select class="form-select" id="role" name="status" >
+                                        <option value="0" @if($user->status == 0) selected @endif>Aktif</option>
+                                        <option value="1" @if($user->status == 1) selected @endif>Non Aktif</option>
                                     </select>
                                 </div>
                             </div>

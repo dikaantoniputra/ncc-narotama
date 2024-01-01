@@ -150,30 +150,30 @@ class LowonganController extends Controller
         $request->validate(Lowongan::$rules);
     
         try {
-            // Find the Pelatihan by ID
-            $pelatihan = Lowongan::findOrFail($id);
+            // Mendapatkan lowongan berdasarkan ID
+            $article = Lowongan::findOrFail($id);
     
-            // Update Pelatihan data
-            $pelatihan->fill($request->all());
+            // Memperbarui data lowongan
+            $article->update($request->all());
     
             // Mengambil data pengguna yang sedang login
             $user = auth()->user();
     
-            // Menyimpan data pengguna yang sedang login ke dalam artikel
-            $pelatihan->user_id = $user->id;
+            // Memperbarui data pengguna yang sedang login ke dalam artikel
+            $article->user_id = $user->id;
     
             // Handle logo file
             if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-                $dokumentasiPelatihanFile = $request->file('logo');
-                $dokumentasiPelatihanFileName = 'dokumentasi_' . time() . '.' . $dokumentasiPelatihanFile->getClientOriginalExtension();
-                $dokumentasiPelatihanFile->move(public_path('uploads/'), $dokumentasiPelatihanFileName);
-                $pelatihan->logo = $dokumentasiPelatihanFileName;
+                $logoFile = $request->file('logo');
+                $logoFileName = 'logo_' . time() . '.' . $logoFile->getClientOriginalExtension();
+                $logoFile->move(public_path('uploads/'), $logoFileName);
+                $article->logo = $logoFileName;
             }
     
             // Handle poster file
-           
+            // ... (Tambahkan logika penanganan file poster jika diperlukan)
     
-            $pelatihan->save();
+            $article->save();
     
             $request->session()->flash('success', 'Berhasil memperbarui.');
             return redirect()->route('lowongans.index')->with('success', 'Data berhasil diperbarui.');
@@ -184,6 +184,7 @@ class LowonganController extends Controller
             return redirect()->back()->withInput();
         }
     }
+    
 
     /**
      * Remove the specified resource from storage.

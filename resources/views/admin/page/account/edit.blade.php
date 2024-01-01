@@ -38,7 +38,7 @@
         
         
                             <div class="row mb-3">
-                                <h4 class="mb-4">UserName</h4>
+                                <h4 class="mb-4">Username</h4>
                                 <input type="text" class="form-control"  placeholder="Masukan UserName" name="username" value="{{ $user->username ?? '' }}">
                             </div>
         
@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">Name</h4>
+                                <h4 class="mb-4">Nama</h4>
                                 <input type="text" class="form-control"  placeholder="Masukan Nama" name="name" value="{{ $user->name ?? '' }}">
                             </div>
 
@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">Telepon</h4>
+                                <h4 class="mb-4">No.Telepon</h4>
                                 <input type="text" class="form-control" id="phone" placeholder="Masukan Telepon" name="phone"  value="{{ $user->phone ?? '' }}">
                             </div>
 
@@ -69,18 +69,19 @@
                             <div class="row mb-3">
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
-                                    <select class="form-select" id="role" name="status">
-                                            <option value="0">Aktiv</option>
-                                            <option value="1">Non Aktiv</option>
+                                    <select class="form-select" id="role" name="status" >
+                                        <option value="0" @if($user->status == 0) selected @endif>Aktif</option>
+                                        <option value="1" @if($user->status == 1) selected @endif>Non Aktif</option>
                                     </select>
                                 </div>
                             </div>
+                            
                                                 
         
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-xl-12">
-                                    <button type="submit" class="btn btn-info px-5">Edit Mahasiswa</button>
+                                    <button type="submit" class="btn btn-info px-5">Simpan Perubahan</button>
                                 </div>
                             </div>
                         </div>

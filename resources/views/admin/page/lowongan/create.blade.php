@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Tambah Lowongan
+Tambah Data Lowongan
 @endsection
 
 @push('after-style')
@@ -25,7 +25,18 @@ Tambah Lowongan
 @endsection
 
 @push('after-script')
+<script>
+    tinymce.init({
+      selector: '#mytextarea2'
+    });
+</script>
 
-        
+<script>
+    tinymce.init({
+      selector: '#mytextarea3'
+    });
+</script>
+<!--app JS-->
+<!--app JS-->
 @endpush
 

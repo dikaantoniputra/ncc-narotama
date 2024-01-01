@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Edit Kategori Pelatihan
+FORM KATEGORI PELATIHAN
 @endsection
 
 @section('content')

@@ -37,8 +37,8 @@
         
         
                             <div class="row mb-3">
-                                <h4 class="mb-4">UserName</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama UserName" name="username" value="{{ $mahasiswa->username ?? '' }}">
+                                <h4 class="mb-4">Username </h4>
+                                <input type="text" class="form-control"  placeholder="Masukkan Username" name="username" value="{{ $mahasiswa->username ?? '' }}">
                             </div>
         
                             <div class="row mb-3">
@@ -47,18 +47,18 @@
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">Nama Siswa</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama Siswa" name="name" value="{{ $lowongan->name ?? '' }}">
+                                <h4 class="mb-4">Nama</h4>
+                                <input type="text" class="form-control"  placeholder="Masukkan Nama" name="name" value="{{ $lowongan->name ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
                                 <h4 class="mb-4">Email</h4>
-                                <input type="email" class="form-control"  placeholder="Masukan Nama Pekerjaan" name="email" value="{{ $lowongan->email ?? '' }}">
+                                <input type="email" class="form-control"  placeholder="Masukkan Password" name="email" value="{{ $lowongan->email ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">Telepon</h4>
-                                <input type="text" class="form-control" id="phone" placeholder="Masukan Nama Pekerjaan" name="phone"  value="{{ $lowongan->phone ?? '' }}">
+                                <h4 class="mb-4">No.Telepon</h4>
+                                <input type="text" class="form-control" id="phone" placeholder="Masukkan No. Telepon" name="phone"  value="{{ $lowongan->phone ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
@@ -69,8 +69,8 @@
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
                                     <select class="form-select" id="role" name="status">
-                                            <option value="0">Aktiv</option>
-                                            <option value="1">Non Aktiv</option>
+                                            <option value="0">Aktif </option>
+                                            <option value="1">Non Aktif</option>
                                     </select>
                                 </div>
                             </div>

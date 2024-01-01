@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xl-12 mx-auto">
-        <h6 class="mb-0 text-uppercase">@yield('title')</h6>
+        <h6 class="mb-0 text-uppercase">Form Pelatihan</h6>
         <hr/>
         <div class="card border-top border-4 border-info">
             <div class="card-body">
@@ -16,21 +16,29 @@
                         <label for="inputKategori" class="col-sm-3 col-form-label">Kategori Pelatihan</label>
                         <div class="col-sm-9">
                             <select class="form-select" id="role" name="kategori_pelatihan_id">
+                                @if(isset($pelatihan) && count($kategori) > 0)
+                                    @foreach($kategori as $r)
+                                        <option value="{{ $r->id }}" @if(isset($pelatihan) && $pelatihan->kategori_pelatihan_id == $r->id) selected @endif>{{ $r->kategori }}</option>
+                                    @endforeach
+                                @else
                                 @foreach($kategori as $r)
                                     <option value="{{ $r->id }}">{{ $r->kategori }}</option>
                                 @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
+                    
+                    
 
                     <div class="row mb-3">
                         <h4 class="mb-4">Nama Pelatihan</h4>
-                        <input type="text" class="form-control"  placeholder="Enter Your Nama Pelatihan" name="nama_pelatihan" value="{{ $pelatihan->nama_pelatihan ?? '' }}">
+                        <input type="text" class="form-control"  placeholder="Masukkan Nama Pelatihan" name="nama_pelatihan" value="{{ $pelatihan->nama_pelatihan ?? '' }}">
                     </div>
 
                     <div class="row mb-3">
                         <h4 class="mb-4">Nama Penyelenggara</h4>
-                        <input type="text" class="form-control"  placeholder="Enter Your Nama Penyelenggara" name="nama_penyelenggara" value="{{ $pelatihan->nama_penyelenggara ?? '' }}">
+                        <input type="text" class="form-control"  placeholder="Masukkan Nama Penyelenggara" name="nama_penyelenggara" value="{{ $pelatihan->nama_penyelenggara ?? '' }}">
                     </div>
 
                 
@@ -90,7 +98,7 @@
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
                         <div class="col-xl-12">
-                            <button type="submit" class="btn btn-info px-5 text-white">Submit @yield('title')</button>
+                            <button type="submit" class="btn btn-info px-5 text-white">Simpan </button>
                         </div>
                     </div>
                 </div>

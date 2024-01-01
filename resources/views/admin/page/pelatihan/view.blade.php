@@ -48,9 +48,9 @@
                                 <th>Id</th>
                                 <th>Kategori</th>
                                 <th>User</th>
-                                <th>Judul</th>
+                                <th>Judul Pelatihan</th>
                                 <th>Nama Penyelenggara</th>
-                                <th>Max Peserta</th>
+                                <th>Kuota Peserta</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

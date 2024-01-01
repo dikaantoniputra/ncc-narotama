@@ -30,9 +30,9 @@
                 <ul>
                     {{-- <li> <a href="{{ url('user') }}"><i class="bx bx-right-arrow-alt"></i>Data User</a>
                     </li> --}}
-                    <li> <a href="{{ url('admin/mahasiswa') }}"><i class="bx bx-right-arrow-alt"></i>Data Siswa</a>
+                    <li> <a href="{{ url('admin/mahasiswa') }}"><i class="bx bx-right-arrow-alt"></i>Data Mahasiswa</a>
                     </li>
-                    <li> <a href="{{ url('admin/admin') }}"><i class="bx bx-right-arrow-alt"></i>Data Admin</a>
+                    <li> <a href="{{ url('admin/admin') }}"><i class="bx bx-right-arrow-alt"></i>Data User</a>
                     </li>
 
                 </ul>
@@ -52,7 +52,7 @@
                 <a href="{{ url('admin/kategoripelatihans') }}">
                     <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
-                    <div class="menu-title">Ketegori</div>
+                    <div class="menu-title">Kategori Pelatihan</div>
                 </a>
             </li>
             <li>
@@ -68,7 +68,7 @@
                 <a href="{{ url('admin/kategorilowongans') }}">
                     <div class="parent-icon"><i class='bx bx-cookie'></i>
                     </div>
-                    <div class="menu-title">Ketegori</div>
+                    <div class="menu-title">Kategori Lowongan</div>
                 </a>
             </li>
             <li>

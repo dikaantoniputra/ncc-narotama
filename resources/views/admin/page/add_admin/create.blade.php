@@ -23,7 +23,7 @@
 
         <div class="row">
             <div class="col-xl-12 mx-auto">
-                <h6 class="mb-0 text-uppercase">Horizontal Form Materi</h6>
+                <h6 class="mb-0 text-uppercase">FORM ADMIN</h6>
                 <hr/>
                 <div class="card border-top border-4 border-info">
                     <div class="card-body">
@@ -37,8 +37,8 @@
         
         
                             <div class="row mb-3">
-                                <h4 class="mb-4">UserName</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan UserName" name="username" value="{{ $mahasiswa->username ?? '' }}">
+                                <h4 class="mb-4">Username</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Username" name="username" value="{{ $mahasiswa->username ?? '' }}">
                             </div>
         
                             <div class="row mb-3">
@@ -47,8 +47,8 @@
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">Name</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Name" name="name" value="{{ $lowongan->password ?? '' }}">
+                                <h4 class="mb-4">Nama</h4>
+                                <input type="text" class="form-control"  placeholder="Masukan Nama" name="name" value="{{ $lowongan->password ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
@@ -57,8 +57,8 @@
                             </div>
 
                             <div class="row mb-3">
-                                <h4 class="mb-4">Telepon</h4>
-                                <input type="text" class="form-control" id="phone" placeholder="Masukan Telepon" name="phone"  value="{{ $lowongan->password ?? '' }}">
+                                <h4 class="mb-4">No. Telepon</h4>
+                                <input type="text" class="form-control" id="phone" placeholder="Masukan No. Telepon" name="phone"  value="{{ $lowongan->password ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
@@ -69,8 +69,8 @@
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
                                     <select class="form-select" id="role" name="status">
-                                            <option value="0">Aktiv</option>
-                                            <option value="1">Non Aktiv</option>
+                                            <option value="0">Aktif</option>
+                                            <option value="1">Non Aktif</option>
                                     </select>
                                 </div>
                             </div>

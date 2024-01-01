@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total K-Pelatihan</p>
+                            <p class="mb-0">Kategori Pelatihan</p>
                             <h4 class="mb-0 text-warning">{{ $kategoripelatihan ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
@@ -73,7 +73,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total K-Lowongan</p>
+                            <p class="mb-0">Kategori Lowongan</p>
                             <h4 class="mb-0 text-warning">{{ $kategorilowongan ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
@@ -123,7 +123,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Lamaran</p>
+                            <p class="mb-0">Total Lamaran Masuk </p>
                             <h4 class="mb-0 text-warning">{{ $lamaran ?? '' }}</h4>
                         </div>
                         <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
@@ -136,23 +136,7 @@
                 </div>
             </div>
 
-            <div class="col pt-2">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0">Total Peserta Pelatihan</p>
-                            <h4 class="mb-0 text-warning">{{ $peserta ?? '' }}</h4>
-                        </div>
-                        <div class="ms-auto"><i class="bx bx-wallet font-35 text-warning"></i>
-                        </div>
-                    </div>
-                    <div class="progress radius-10 my-2" style="height:4px;">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 65%"></div>
-                    </div>
-                   
-                </div>
-            </div>
-            
+         
         </div>
         
     </div>

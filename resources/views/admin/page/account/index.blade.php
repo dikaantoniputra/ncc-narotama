@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-    Mahasiswa
+Data Mahasiswa
 @endsection
 
 
@@ -16,33 +16,27 @@
 
 <div class="container-fluid">
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Tables @yield('title')</div>
+        <div class="breadcrumb-title pe-3"> @yield('title')</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Data @yield('title')</li>
+                    <li class="breadcrumb-item active" aria-current="page"> @yield('title')</li>
                 </ol>
             </nav>
         </div>
         <div class="ms-auto">
             <div class="btn-group">
                     <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
-                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-              
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                    <a class="dropdown-item" href="javascript:;">Another action</a>
-                    <a class="dropdown-item" href="javascript:;">Something else here</a>
-                    <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-                </div>
+                   
+                
             </div>
         </div>
     </div>
     <!--end breadcrumb-->
     
-    <h6 class="mb-0 text-uppercase">DataTable @yield('title')</h6>
+    <h6 class="mb-0 text-uppercase"> @yield('title')</h6>
     <hr/>
     <div class="card">
         <div class="card-body">
@@ -53,7 +47,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>phone</th>
+                            <th>No.Telepon</th>
                             <th>Role</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -67,9 +61,17 @@
                             <td>{{ $mahasiswa->email }}</td>
                             <td>{{ $mahasiswa->phone }}</td>
                             <td>{{ $mahasiswa->role }}</td>
-                            <td>{{ $mahasiswa->status }}</td>
                             <td>
-                                
+                                @if($mahasiswa->status == 0)
+                                    Aktif
+                                @elseif($mahasiswa->status == 1)
+                                    Non Aktif
+                                @else
+                                    
+                                @endif
+                            </td>
+                            <td>
+                             
                                 <a href="{{ route('mahasiswa.show', $mahasiswa->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Lihat</a>
                                 <a href="{{ route('mahasiswa.edit', $mahasiswa->id) }}" class="text-white px-[10px] py-[5px] bg-blue-500 rounded-lg">Edit</a>
                                 <form action="{{ route('mahasiswa.destroy', $mahasiswa->id) }}" method="POST">

@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-View Berita
+
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ View Berita
             <div class="card-body">
                 <div class="row">
                     <div class="col-xl-12 mx-auto">
-                        <h6 class="mb-0 text-uppercase">Form  @yield('title')</h6>
+                        <h6 class="mb-0 text-uppercase">FORM BERITA</h6>
                         <hr/>
                         <div class="card border-top border-0 border-4 border-info">
                             <div class="card-body">
@@ -19,7 +19,7 @@ View Berita
                                     <div class="card-title d-flex align-items-center">
                                         <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                                         </div>
-                                        <h5 class="mb-0 text-info">@yield('title') </h5>
+                                        <h5 class="mb-0 text-info">Lihat Berita </h5>
                                     </div>
                                     <hr/>
                 

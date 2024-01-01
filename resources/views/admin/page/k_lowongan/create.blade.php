@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Kategori Lowongan
+Tambah Kategori Lowongan
 @endsection
 
 @push('after-style')

@@ -8,13 +8,13 @@
                     <div class="card-title d-flex align-items-center">
                         <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                         </div>
-                        <h5 class="mb-0 text-info">@yield('title') </h5>
+                        <h5 class="mb-0 text-info">TAMBAH KATEGORI PELATIHAN </h5>
                     </div>
                     <hr/>
                     <div class="row mb-3">
                         <label for="inputEnterYourName" class="col-sm-3 col-form-label">Nama Kategori</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Enter Nama Kategori" name="kategori" value="{{ $kategoripelatihans->kategori ?? '' }}">
+                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Masukkan Kategori Pelatihan" name="kategori" value="{{ $kategoripelatihans->kategori ?? '' }}">
                         </div>
                     </div>
                     <div class="row">
