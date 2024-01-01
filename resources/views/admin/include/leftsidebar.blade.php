@@ -23,7 +23,8 @@
             </li>
             <li>
                 <a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    <div class="parent-icon">
+                        <i class="bx bx-user-circle"></i>
                     </div>
                     <div class="menu-title">DATA USER</div>
                 </a>
@@ -41,7 +42,7 @@
             <li class="menu-label">Master Berita</li>
             <li>
                 <a href="{{ url('admin/beritas') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    <div class="parent-icon"><i class="lni lni-blogger"></i>
                     </div>
                     <div class="menu-title">Berita</div>
                 </a>
@@ -50,14 +51,14 @@
             <li class="menu-label">Master Pelatihan</li>
             <li>
                 <a href="{{ url('admin/kategoripelatihans') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    <div class="parent-icon"><i class="bx bx-category"></i>
                     </div>
                     <div class="menu-title">Kategori Pelatihan</div>
                 </a>
             </li>
             <li>
                 <a href="{{ url('admin/pelatihans') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    <div class="parent-icon"><i class="lni lni-agenda"></i>
                     </div>
                     <div class="menu-title">Pelatihan</div>
                 </a>
@@ -66,14 +67,14 @@
             <li class="menu-label">Master Lowongan</li>
             <li>
                 <a href="{{ url('admin/kategorilowongans') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    <div class="parent-icon"><i class="bx bx-category"></i>
                     </div>
                     <div class="menu-title">Kategori Lowongan</div>
                 </a>
             </li>
             <li>
                 <a href="{{ url('admin/lowongans') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    <div class="parent-icon"><i class="lni lni-agenda"></i>
                     </div>
                     <div class="menu-title">Lowongan</div>
                 </a>
@@ -82,14 +83,14 @@
             <li class="menu-label">Master Pendaftaran</li>
             <li>
                 <a href="{{ url('admin/peserta') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    <div class="parent-icon"><i class="lni lni-customer"></i>
                     </div>
                     <div class="menu-title">Peserta</div>
                 </a>
             </li>
             <li>
                 <a href="{{ url('admin/lamaran') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    <div class="parent-icon"><i class="lni lni-customer"></i>
                     </div>
                     <div class="menu-title">Lamaran</div>
                 </a>
