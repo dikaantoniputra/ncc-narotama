@@ -11,9 +11,9 @@ Lihat Pelatihan
             <div class="card-body">
                 <div class="row">
                     <div class="col-xl-12 mx-auto">
-                        <h6 class="mb-0 text-uppercase">Form Pelatihan</h6>
+                        <h6 class="mb-0">Form Pelatihan</h6>
                         <hr/>
-                        <div class="card border-top border-4 border-info">
+                        <div class="card border-top border-4 border-primary">
                             <div class="card-body">
                                 <div class="border p-4 rounded">
                                     <div class="card-title d-flex align-items-center">
@@ -24,9 +24,9 @@ Lihat Pelatihan
                                     <hr/>
                 
                                     <div class="row mb-3">
-                                        <label for="inputKategori" class="col-sm-3 col-form-label">Kategori Pelatihan</label>
+                                        <label for="inputKategori" class="col-sm-3 col-form-label"><h6>Kategori Pelatihan</h6></label>
                                         <div class="col-sm-9">
-                                            <select class="form-select" id="role" name="kategori_pelatihan_id">
+                                            <select class="form-select" id="role" name="kategori_pelatihan_id" disabled>
                                                 @foreach($kategori as $r)
                                                     <option value="{{ $r->id }}">{{ $r->kategori }}</option>
                                                 @endforeach
@@ -55,7 +55,7 @@ Lihat Pelatihan
                 
                                     <div class="row mb-3">
                                         <div class="col-xl-12 mx-auto">
-                                            <h6 class="mb-0 text-uppercase">Dokumentasi Pelatihan</h6>
+                                            <h4 class="mt-4">Dokumentasi</h4>
                                             <hr/>
                                             @if($pelatihan->dokumentasi_pelatihan ?? '')
                                             <img src="{{ asset('') }}uploads/{{ $pelatihan->dokumentasi_pelatihan }}" alt="blog image">
@@ -68,7 +68,7 @@ Lihat Pelatihan
                 
                                     <div class="row mb-3">
                                         <div class="col-xl-12 mx-auto">
-                                            <h6 class="mb-0 text-uppercase">Poster</h6>
+                                            <h4 class="mt-4">Poster</h4>
                                             <hr/>
                                             @if($pelatihan->poster ?? '')
                                             <img src="{{ asset('') }}uploads/{{ $pelatihan->poster }}" alt="blog image">
@@ -81,7 +81,7 @@ Lihat Pelatihan
                 
                                     <div class="row mb-3">
                                         <h4 class="mb-4">Max Peserta</h4>
-                                        <input type="number" class="form-control"  placeholder="Masukan Kuota Peserta" name="max_peserta" value="{{ $pelatihan->max_peserta ?? '' }}">
+                                        <input type="number" class="form-control"  placeholder="Masukan Kuota Peserta" name="max_peserta" value="{{ $pelatihan->max_peserta ?? '' }}" disabled>
                                     </div>
                 
                 
@@ -105,7 +105,7 @@ Lihat Pelatihan
                                     <div class="row">
                                         <label class="col-sm-3 col-form-label"></label>
                                         <div class="col-xl-12">
-                                            <a href="{{ url('admin/pelatihans') }}" class="btn btn-info px-5 text-white">Kembali </a>
+                                            <a href="{{ url('admin/pelatihans') }}" class="btn btn-primary px-5 text-white">Kembali </a>
                                         </div>
                                     </div>
                                 </div>

@@ -35,7 +35,7 @@
     </div>
     <!--end breadcrumb-->
     
-    <h6 class="mb-0 text-uppercase">DataTable @yield('title')</h6>
+    
     <hr/>
     <div class="card">
         <div class="card-body">
