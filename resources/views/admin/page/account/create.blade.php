@@ -1,9 +1,7 @@
 @extends('admin.layout.master')
 
 @section('content')
-    <div>
-        Buat Akun Mahasiswa
-    </div>
+
     
     @if ($errors->any())
         <div>
@@ -23,9 +21,9 @@
 
         <div class="row">
             <div class="col-xl-12 mx-auto">
-                <h6 class="mb-0 text-uppercase">Form Mahasiswa</h6>
+                <h6 class="mb-0">Form Mahasiswa</h6>
                 <hr/>
-                <div class="card border-top border-4 border-info">
+                <div class="card border-top border-4 border-primary">
                     <div class="card-body">
                         <div class="border p-4 rounded">
                             <div class="card-title d-flex align-items-center">
@@ -43,7 +41,7 @@
         
                             <div class="row mb-3">
                                 <h4 class="mb-4">Password</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan Nama Password" name="password" value="{{ $lowongan->password ?? '' }}">
+                                <input type="text" class="form-control"  placeholder="Masukan Password" name="password" value="{{ $lowongan->password ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
@@ -53,7 +51,7 @@
 
                             <div class="row mb-3">
                                 <h4 class="mb-4">Email</h4>
-                                <input type="email" class="form-control"  placeholder="Masukkan Password" name="email" value="{{ $lowongan->email ?? '' }}">
+                                <input type="email" class="form-control"  placeholder="Masukkan Email" name="email" value="{{ $lowongan->email ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
@@ -66,7 +64,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
+                                <label for="inputEnterYourName" class="col-sm-3 col-form-label"><h4>Status</h4></label>
                                 <div class="col-sm-9">
                                     <select class="form-select" id="role" name="status">
                                             <option value="0">Aktif </option>
@@ -79,7 +77,7 @@
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-xl-12">
-                                    <button type="submit" class="btn btn-info px-5">Tambah Mahasiswa</button>
+                                    <button type="submit" class="btn btn-primary px-5">Simpan</button>
                                 </div>
                             </div>
                         </div>

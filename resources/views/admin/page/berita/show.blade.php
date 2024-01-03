@@ -11,9 +11,9 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-xl-12 mx-auto">
-                        <h6 class="mb-0 text-uppercase">FORM BERITA</h6>
+                        <h6 class="mb-0">Form Berita</h6>
                         <hr/>
-                        <div class="card border-top border-0 border-4 border-info">
+                        <div class="card border-top border-0 border-4 border-primary">
                             <div class="card-body">
                                 <div class="border p-4 rounded">
                                     <div class="card-title d-flex align-items-center">
@@ -24,7 +24,7 @@
                                     <hr/>
                 
                                     <div class="row mb-3">
-                                        <h4 class="mb-4">Judul</h4>
+                                        <h4 class="mb-4">Judul Berita</h4>
                                             <input type="text" class="form-control"  placeholder="Isi Judul Berita" name="judul" value="{{ $berita->judul ?? '' }}" disabled>
                                         
                                     </div>
@@ -45,7 +45,7 @@
                                     <div class="row">
                                         <label class="col-sm-3 col-form-label"></label>
                                         <div class="col-xl-12">
-                                            <a href="{{ url('admin/beritas') }}" class="btn btn-info px-5">Kembali</a>
+                                            <a href="{{ url('admin/beritas') }}" class="btn btn-primary px-5">Kembali</a>
                                         </div>
                                     </div>
                                 </div>

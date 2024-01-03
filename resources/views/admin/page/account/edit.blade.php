@@ -1,9 +1,7 @@
 @extends('admin.layout.master')
 
 @section('content')
-    <div>
-        Edit Akun Mahasiswa
-    </div>
+    
     
     @if ($errors->any())
         <div>
@@ -24,9 +22,9 @@
 
         <div class="row">
             <div class="col-xl-12 mx-auto">
-                <h6 class="mb-0 text-uppercase"> Form Edit Mahasisa</h6>
+                <h6 class="mb-0"> Form Mahasisa</h6>
                 <hr/>
-                <div class="card border-top border-4 border-info">
+                <div class="card border-top border-4 border-primary">
                     <div class="card-body">
                         <div class="border p-4 rounded">
                             <div class="card-title d-flex align-items-center">
@@ -39,7 +37,7 @@
         
                             <div class="row mb-3">
                                 <h4 class="mb-4">Username</h4>
-                                <input type="text" class="form-control"  placeholder="Masukan UserName" name="username" value="{{ $user->username ?? '' }}">
+                                <input type="text" class="form-control"  placeholder="Masukan Username" name="username" value="{{ $user->username ?? '' }}">
                             </div>
         
                             <div class="row mb-3">
@@ -59,7 +57,7 @@
 
                             <div class="row mb-3">
                                 <h4 class="mb-4">No.Telepon</h4>
-                                <input type="text" class="form-control" id="phone" placeholder="Masukan Telepon" name="phone"  value="{{ $user->phone ?? '' }}">
+                                <input type="text" class="form-control" id="phone" placeholder="Masukan No. Telepon" name="phone"  value="{{ $user->phone ?? '' }}">
                             </div>
 
                             <div class="row mb-3">
@@ -67,7 +65,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
+                                <label for="inputEnterYourName" class="col-sm-3 col-form-label"><h4>Status</h4></label>
                                 <div class="col-sm-9">
                                     <select class="form-select" id="role" name="status" >
                                         <option value="0" @if($user->status == 0) selected @endif>Aktif</option>
@@ -81,7 +79,7 @@
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-xl-12">
-                                    <button type="submit" class="btn btn-info px-5">Simpan Perubahan</button>
+                                    <button type="submit" class="btn btn-primary px-5">Simpan</button>
                                 </div>
                             </div>
                         </div>
