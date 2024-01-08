@@ -13,7 +13,7 @@
                 hingga minat dalam kewirausahaan.
             </div>
             <div class="mt-[36px]">
-                <a href="#" class="bg-[#4176CF] hover:bg-blue-600 text-white rounded-[10px] flex lg:w-1/2">
+                <a href="{{ url('pelatihan') }}" class="bg-[#4176CF] hover:bg-blue-600 text-white rounded-[10px] flex lg:w-1/2">
                     <div class="flex mx-auto px-[32px] py-[16px]">
                         Selengkapnya
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,9 +82,9 @@
                     <img src="{{ asset('uploads/' . $item->cover) }}" alt="card1" class="rounded-tl-[8px] rounded-tr-[8px]">
                     <div class="p-[20px]">
                         <div class="text-[12px] font-medium text-[#808080]">{{ $item->created_at }}</div>
-                        <div class="my-[8px] text-[#444] text-[20px] font-semibold">{{ $item->judul }}</div>
+                        <a href="{{ route('user.page.detailNews', $item->id) }}" class="my-[8px] text-[#444] text-[20px] font-semibold hover:text-blue-600">{{ $item->judul }}</a>
                         <div class="text-[#606060] text-[16px] font-medium text-justify">
-                            {{ strip_tags($item->isi) }}
+                            {{ mb_substr(strip_tags($item->isi), 0, 150) }}
                         </div>
                     </div>
                 </div>
@@ -176,9 +176,11 @@
                         <div class="text-[#606060] mb-[32px]">
                             {{ strip_tags($item->deskripsi_pekerjaan) }}
                         </div>
-                        <button class="text-[16px] text-white font-medium px-[32px] py-[16px] bg-[#4176CF] hover:bg-blue-600 rounded-[10px] flex ml-auto">
-                            Apply
-                        </button>
+                        <div class="flex">
+                            <a href="{{ route('user.page.detailVacancy', $item->id) }}" class="text-[16px] text-white font-medium px-[32px] py-[16px] bg-[#4176CF] hover:bg-blue-600 rounded-[10px] ml-auto">
+                                Apply
+                            </a>
+                        </div>
                     </div>
                 </div>
             @empty

@@ -242,9 +242,9 @@ class LowonganController extends Controller
         
         $haveApplied = Lamaran::all();
 
-        $haveApplied = $haveApplied->sortBy(function ($item) {
-            return $item->status === 'Diterima' ? 0 : 1;
-        });
+        $isRegistered = Peserta::where('pelatihan_id', $detailCourse->id)
+        ->where('mahasiswa_id', $user->id)
+        ->exists();
 
         return view('user.page.vacancy', compact('latestVacancy', 'searchVacancy'), [
             "title" => "Lowongan",
