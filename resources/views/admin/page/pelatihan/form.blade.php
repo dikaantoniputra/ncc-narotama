@@ -1,19 +1,19 @@
 <div class="row">
     <div class="col-xl-12 mx-auto">
-        <h6 class="mb-0 text-uppercase">Form Pelatihan</h6>
+        <h6 class="mb-0">Form Pelatihan</h6>
         <hr/>
-        <div class="card border-top border-4 border-info">
+        <div class="card border-top border-4 border-primary">
             <div class="card-body">
                 <div class="border p-4 rounded">
                     <div class="card-title d-flex align-items-center">
                         <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                         </div>
-                        <h5 class="mb-0 text-info">@yield('title')</h5>
+                        <h5 class="mb-0 text-info">Data Pelatihan</h5>
                     </div>
                     <hr/>
 
                     <div class="row mb-3">
-                        <label for="inputKategori" class="col-sm-3 col-form-label">Kategori Pelatihan</label>
+                        <label for="inputKategori" class="col-sm-3 col-form-label"><h6>Kategori Pelatihan</h6></label>
                         <div class="col-sm-9">
                             <select class="form-select" id="role" name="kategori_pelatihan_id">
                                 @if(isset($pelatihan) && count($kategori) > 0)
@@ -50,7 +50,7 @@
 
                     <div class="row mb-3">
                         <div class="col-xl-12 mx-auto">
-                            <h6 class="mb-0 text-uppercase">Dokumentasi Pelatihan</h6>
+                            <h4 class="mt-4">Dokumentasi (File JPG atau PNG maks 2MB)</h4>
                             <hr/>
                             <div class="card">
                                 <div class="card-body">                      
@@ -62,7 +62,7 @@
 
                     <div class="row mb-3">
                         <div class="col-xl-12 mx-auto">
-                            <h6 class="mb-0 text-uppercase">Poster</h6>
+                            <h4 class="mt-4">Poster (File JPG atau PNG maks 2MB)</h4>
                             <hr/>
                             <div class="card">
                                 <div class="card-body">                      
@@ -98,7 +98,7 @@
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
                         <div class="col-xl-12">
-                            <button type="submit" class="btn btn-info px-5 text-white">Simpan </button>
+                            <button type="submit" class="btn btn-primary px-5 text-white">Simpan </button>
                         </div>
                     </div>
                 </div>

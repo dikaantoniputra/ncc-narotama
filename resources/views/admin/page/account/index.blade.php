@@ -28,7 +28,7 @@ Data Mahasiswa
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                    <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah Data @yield('title')</a>
+                    <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah @yield('title')</a>
                    
                 
             </div>
@@ -36,7 +36,7 @@ Data Mahasiswa
     </div>
     <!--end breadcrumb-->
     
-    <h6 class="mb-0 text-uppercase"> @yield('title')</h6>
+    
     <hr/>
     <div class="card">
         <div class="card-body">

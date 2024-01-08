@@ -1,9 +1,7 @@
 @extends('admin.layout.master')
 
 @section('content')
-    <div>
-        Buat Akun Admin
-    </div>
+    
     
     @if ($errors->any())
         <div>
@@ -23,9 +21,9 @@
 
         <div class="row">
             <div class="col-xl-12 mx-auto">
-                <h6 class="mb-0 text-uppercase">FORM ADMIN</h6>
+                <h6 class="mb-0">Form Admin</h6>
                 <hr/>
-                <div class="card border-top border-4 border-info">
+                <div class="card border-top border-4 border-primary">
                     <div class="card-body">
                         <div class="border p-4 rounded">
                             <div class="card-title d-flex align-items-center">
@@ -66,7 +64,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
+                                <label for="inputEnterYourName" class="col-sm-3 col-form-label"><h4>Status</h4></label>
                                 <div class="col-sm-9">
                                     <select class="form-select" id="role" name="status">
                                             <option value="0">Aktif</option>
@@ -79,7 +77,7 @@
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-xl-12">
-                                    <button type="submit" class="btn btn-info px-5">Tambah Admin</button>
+                                    <button type="submit" class="btn btn-primary px-5">Simpan</button>
                                 </div>
                             </div>
                         </div>
