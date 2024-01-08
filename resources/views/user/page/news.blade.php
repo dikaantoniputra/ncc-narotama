@@ -31,9 +31,11 @@
                     <div class="text-[16px] text-[#808080] font-medium">
                         {{ $firstNews->tanggal }} <!-- Assuming 'tanggal' is the attribute for the date -->
                     </div>
-                    <div class="text-[#2C2C2C] text-[36px] font-semibold my-[20px]">
-                        {{ $firstNews->judul }}
-                    </div>
+                    <a href="{{ route('user.page.detailNews', $firstNews->id) }}">
+                        <div class="text-[#2C2C2C] text-[36px] font-semibold my-[20px]">
+                            {{ $firstNews->judul }}
+                        </div>
+                     </a>
                     <div class="text-[#606060] text-[16px] font-medium">
                         {{ $firstNews->isi }}
                     </div>
@@ -53,7 +55,7 @@
                     <img src="{{ asset('uploads/' . $news->cover) }}" alt="{{ $news->judul }}" class="rounded-tl-[8px] rounded-tr-[8px]">
                     <div class="p-[20px]">
                         <div class="text-[12px] font-medium text-[#808080]">{{ $news->tanggal }}</div>
-                        <div class="my-[8px] text-[#444] text-[20px] font-semibold">{{ $news->judul }}</div>
+                        <a href="{{ route('user.page.detailNews', $news->id) }}" class="my-[8px] text-[#444] text-[20px] font-semibold hover:text-blue-600">{{ $news->judul }}</a>
                         <div class="text-[#606060] text-[16px] font-medium text-justify">
                             {{ $news->isi }}
                         </div>

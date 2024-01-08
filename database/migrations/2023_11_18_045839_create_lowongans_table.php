@@ -21,8 +21,8 @@ class CreateLowongansTable extends Migration
             $table->string('nama_perusahaan');
             $table->string('title_pekerjaan');
             $table->text('deskripsi_pekerjaan');
-            $table->string('syarat_pekerjaan');
-            $table->string('kompetensi_pekerjaan');
+            $table->text('syarat_pekerjaan');
+            $table->text('kompetensi_pekerjaan');
             $table->string('kota');
             $table->integer('status')->default(0); // Ganti tipe data menjadi enum;
             $table->foreign('kategori_lowongan_id')->references('id')->on('kategori_lowongans')->onDelete('cascade');

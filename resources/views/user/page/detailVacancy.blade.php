@@ -40,7 +40,7 @@
             </div>
         </div>
         <div>
-            @if (!!$haveApplied)
+            @if (!$haveApplied)
             <button type="button" data-modal-target="vacancyForm" data-modal-toggle="vacancyForm" class="bg-[#4176CF] hover:bg-blue-600 text-white text-[16px] font-medium px-[32px] py-[16px] rounded-[10px]">
                 Kirim Lamaran
             </button>
@@ -68,9 +68,12 @@
             <span class="bg-[#F5F500] px-[12px] py-[4px] rounded-[20px] text-[12px] font-bold">
                 {{ $detailVacancy->kategorilowongan->kategori ?? 'Kategori Kosong' }}
             </span>
-            <span class="bg-[#4176CF] px-[12px] py-[4px] rounded-[20px] text-[12px] font-bold text-white">
-                Dikirim
-            </span>
+            
+            @isset($haveApplied)
+                <span class="bg-[#4176CF] px-[12px] py-[4px] rounded-[20px] text-[12px] font-bold text-white">
+                    Dikirim
+                </span>
+            @endisset
         </div>
         <div class="mt-[40px]">
             <div class="mb-[28px]">

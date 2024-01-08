@@ -126,15 +126,17 @@
             {{-- Tabel --}}
             <div class="overflow-x-auto">
                 <table class="w-full rounded-[18px]">
-                    <thead class="bg-[#4176CF] text-white text-[20px] font-semibold">
-                        <tr>
-                            <th class="px-[24px] py-[16px] rounded-tl-[18px]">No</th>
-                            <th class="px-[24px] py-[16px]">Nama Pelatihan</th>
-                            <th class="px-[24px] py-[16px]">Tanggal</th>
-                            <th class="px-[24px] py-[16px]">Status</th>
-                            <th class="px-[24px] py-[16px] rounded-tr-[18px]">Aksi</th>
-                        </tr>
-                    </thead>
+                    @if(count($registeredCourse) > 0)
+                        <thead class="bg-[#4176CF] text-white text-[20px] font-semibold">
+                            <tr>
+                                <th class="px-[24px] py-[16px] rounded-tl-[18px]">No</th>
+                                <th class="px-[24px] py-[16px]">Nama Pelatihan</th>
+                                <th class="px-[24px] py-[16px]">Tanggal</th>
+                                <th class="px-[24px] py-[16px]">Status</th>
+                                <th class="px-[24px] py-[16px] rounded-tr-[18px]">Aksi</th>
+                            </tr>
+                        </thead>
+                    @endif
                     <tbody class="bg-white">
                         @forelse ($registeredCourse as $item)
                             <tr class="text-center text-[#606060]">
