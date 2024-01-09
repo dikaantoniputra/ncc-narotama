@@ -27,7 +27,7 @@ class CreatePelatihansTable extends Migration
             $table->timestamps();
 
             // Tambahkan foreign key untuk admin_id
-            $table->foreign('kategori_pelatihan_id')->references('id')->on('kategori_pelatihans');
+            // $table->foreign('kategori_pelatihan_id')->references('id')->on('kategori_pelatihans');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

@@ -40,14 +40,15 @@
             </div>
         </div>
         <div>
-            @if (!$haveApplied)
-            <button type="button" data-modal-target="vacancyForm" data-modal-toggle="vacancyForm" class="bg-[#4176CF] hover:bg-blue-600 text-white text-[16px] font-medium px-[32px] py-[16px] rounded-[10px]">
-                Kirim Lamaran
-            </button>
-            @else
+            @if ($haveApplied->isNotEmpty())
             <button type="button" data-modal-target="vacancyForm" disabled data-modal-toggle="vacancyForm" class="bg-[#ABABAB] text-white text-[16px] font-medium px-[32px] py-[16px] rounded-[10px]">
                 Kirim Lamaran
             </button>
+            @else
+            <button type="button" data-modal-target="vacancyForm" data-modal-toggle="vacancyForm" class="bg-[#4176CF] hover:bg-blue-600 text-white text-[16px] font-medium px-[32px] py-[16px] rounded-[10px]">
+                Kirim Lamaran
+            </button>
+           
             @endif
         </div>
     </section>
@@ -69,11 +70,15 @@
                 {{ $detailVacancy->kategorilowongan->kategori ?? 'Kategori Kosong' }}
             </span>
             
-            @isset($haveApplied)
-                <span class="bg-[#4176CF] px-[12px] py-[4px] rounded-[20px] text-[12px] font-bold text-white">
-                    Dikirim
-                </span>
-            @endisset
+            
+
+            @if ($haveApplied->isNotEmpty())
+            <span class="bg-[#4176CF] px-[12px] py-[4px] rounded-[20px] text-[12px] font-bold text-white">
+                Dikirim
+            </span>
+            @else
+           
+            @endif
         </div>
         <div class="mt-[40px]">
             <div class="mb-[28px]">

@@ -59,7 +59,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td hidden>{{ $item->id }}</td>
-                                    <td>{{ $item->kategoripelatihan->kategori }}</td>
+                                    <td>{{ $item->kategoripelatihan->kategori ?? ''}}</td>
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->nama_pelatihan }}</td>
                                     <td>{{ $item->nama_penyelenggara }}</td>

@@ -56,7 +56,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td hidden>{{ $item->id }}</td>
-                                    <td>{{ $item->kategorilowongan->kategori }}</td>
+                                    <td>{{ $item->kategorilowongan->kategori ?? '' }}</td>
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->title_pekerjaan }}</td>
                                     <td>{{ $item->nama_perusahaan }}</td>
