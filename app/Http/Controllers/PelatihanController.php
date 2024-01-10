@@ -76,7 +76,7 @@ class PelatihanController extends Controller
 
         $userId = auth()->id(); // Mendapatkan ID pengguna yang login
 
-        $registeredCourse = Peserta::all();
+        $registeredCourse = Peserta::where('mahasiswa_id', $userId)->get();
 
         $registeredCourse = $registeredCourse->sortBy(function ($item) {
             return $item->status === 'Terdaftar' ? 0 : 1;

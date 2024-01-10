@@ -239,12 +239,15 @@ class LowonganController extends Controller
         });
 
         $userId = auth()->id();
-        
-        $haveApplied = Lamaran::all();
 
-        $haveApplied = $haveApplied->sortBy(function ($item) {
+        // Retrieve job applications for the logged-in user
+        $haveApplied = Lamaran::where('mahasiswa_id', $userId)->get();
+    
+        // Sort the job applications by status
+        $sortedApplications = $haveApplied->sortBy(function ($item) {
             return $item->status === 'Diterima' ? 0 : 1;
         });
+    
 
         return view('user.page.vacancy', compact('latestVacancy', 'searchVacancy'), [
             "title" => "Lowongan",
@@ -258,7 +261,12 @@ class LowonganController extends Controller
 
         $haveApplied = Lamaran::all();
 
-        $haveApplied = Lamaran::where('lowongan_id', $id)->get();
+        $userId = auth()->id();
+
+    // Retrieve job applications for the logged-in user and specific job posting
+    $haveApplied = Lamaran::where('mahasiswa_id', $userId)
+        ->where('lowongan_id', $id)
+        ->get();
 
         return view('user.page.detailVacancy', compact('detailVacancy'), [
             "title" => "Detail Lowongan",
