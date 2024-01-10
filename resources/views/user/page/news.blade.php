@@ -36,8 +36,11 @@
                             {{ $firstNews->judul }}
                         </div>
                      </a>
-                    <div class="text-[#606060] text-[16px] font-medium">
+                    <!-- <div class="text-[#606060] text-[16px] font-medium">
                         {{ $firstNews->isi }}
+                    </div> -->
+                    <div class="text-[#606060] text-[16px] font-medium">
+                            {{ mb_substr(strip_tags($firstNews->isi), 0, 450) }}
                     </div>
                
             </div>
@@ -56,8 +59,8 @@
                     <div class="p-[20px]">
                         <div class="text-[12px] font-medium text-[#808080]">{{ $news->tanggal }}</div>
                         <a href="{{ route('user.page.detailNews', $news->id) }}" class="my-[8px] text-[#444] text-[20px] font-semibold hover:text-blue-600">{{ $news->judul }}</a>
-                        <div class="text-[#606060] text-[16px] font-medium text-justify">
-                            {{ $news->isi }}
+                        <div class="text-[#606060] text-[16px] font-medium">
+                            {{ strip_tags($news->isi) }}
                         </div>
                     </div>
                 </div>
@@ -79,7 +82,7 @@
                     <div class="p-[20px]">
                         
                         <a href="{{ route('user.page.detailNews', $item->id) }}" class="my-[8px] text-[#444] text-[20px] font-semibold hover:text-blue-600">{{ $item->judul }}</a>
-                        <div class="text-[#606060] text-[16px] font-medium text-justify">
+                        <div class="text-[#606060] text-[16px] font-medium">
                             {{ strip_tags($item->isi) }}
                         </div>
                     </div>

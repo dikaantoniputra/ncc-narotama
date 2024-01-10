@@ -52,7 +52,6 @@
                             @forelse ($vacancyData as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td hidden>{{ $item->id }}</td>
                                 <td>{{ $item->judul }}</td>
                                 <td>{{ $item->created_at }}</td>
                             
