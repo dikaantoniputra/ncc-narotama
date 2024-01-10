@@ -97,7 +97,7 @@
                             </div>
                             <div class="text-[12px] font-bold">
                                 <div class="bg-[#F5F500] px-[12px] py-[4px] rounded-[20px]">
-                                    {{ $item->kategorilowongan->kategori }}
+                                    {{ $item->kategorilowongan->kategori ?? '' }}
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                         </div>
                         <div class="text-[12px] font-bold">
                             <div class="bg-[#F5F500] px-[12px] py-[4px] rounded-[20px]">
-                                {{ $item->kategorilowongan->kategori }}
+                                {{ $item->kategorilowongan->kategori ?? '' }}
                             </div>
                         </div>
                     </div>
